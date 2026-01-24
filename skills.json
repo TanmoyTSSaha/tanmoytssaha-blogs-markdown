@@ -1,0 +1,234 @@
+{
+    "skills": [
+        {
+            "name": "Python",
+            "icon-dark": "https://github.com/tandpfun/skill-icons/blob/main/icons/Python-Dark.svg",
+            "icon-light": "https://github.com/tandpfun/skill-icons/blob/main/icons/Python-Light.svg",
+            "type": "Languages"
+        },
+        {
+            "name": "SQL",
+            "icon-dark": "https://github.com/tandpfun/skill-icons/blob/main/icons/PostgreSQL-Dark.svg",
+            "icon-light": "https://github.com/tandpfun/skill-icons/blob/main/icons/PostgreSQL-Light.svg",
+            "type": "Languages"
+        },
+        {
+            "name": "C++",
+            "icon-dark": "https://github.com/tandpfun/skill-icons/blob/main/icons/CPP.svg",
+            "icon-light": "https://github.com/tandpfun/skill-icons/blob/main/icons/CPP.svg",
+            "type": "Languages"
+        },
+        {
+            "name": "GoLang",
+            "icon-dark": "https://github.com/tandpfun/skill-icons/blob/main/icons/GoLang.svg",
+            "icon-light": "https://github.com/tandpfun/skill-icons/blob/main/icons/GoLang.svg",
+            "type": "Languages"
+        },
+        {
+            "name": "Scala",
+            "icon-dark": "https://github.com/tandpfun/skill-icons/blob/main/icons/Scala-Dark.svg",
+            "icon-light": "https://github.com/tandpfun/skill-icons/blob/main/icons/Scala-Light.svg",
+            "type": "Languages"
+        },
+        {
+            "name": "Spark",
+            "icon-dark": "https://www.vectorlogo.zone/logos/apache_spark/apache_spark-ar21~bgwhite.svg",
+            "icon-light": "https://www.vectorlogo.zone/logos/apache_spark/apache_spark-ar21~bgwhite.svg",
+            "type": "Frameworks & Databases"
+        },
+        {
+            "name": "PySpark",
+            "icon-dark": "https://www.vectorlogo.zone/logos/apache_spark/apache_spark-ar21~bgwhite.svg",
+            "icon-light": "https://www.vectorlogo.zone/logos/apache_spark/apache_spark-ar21~bgwhite.svg",
+            "type": "Frameworks & Databases"
+        },
+        {
+            "name": "Hadoop",
+            "icon-dark": "https://icon.icepanel.io/Technology/svg/Apache-Hadoop.svg",
+            "icon-light": "https://icon.icepanel.io/Technology/svg/Apache-Hadoop.svg",
+            "type": "Frameworks & Databases"
+        },
+        {
+            "name": "Azkaban",
+            "type": "Frameworks & Databases"
+        },
+        {
+            "name": "Airflow",
+            "icon-dark": "https://icon.icepanel.io/Technology/svg/Apache-Airflow.svg",
+            "icon-light": "https://icon.icepanel.io/Technology/svg/Apache-Airflow.svg",
+            "type": "Frameworks & Databases"
+        },
+        {
+            "name": "Django",
+            "icon-dark": "https://github.com/tandpfun/skill-icons/blob/main/icons/Django.svg",
+            "icon-light": "https://github.com/tandpfun/skill-icons/blob/main/icons/Django.svg",
+            "type": "Frameworks & Databases"
+        },
+        {
+            "name": "Flutter",
+            "icon-dark": "https://github.com/tandpfun/skill-icons/blob/main/icons/Flutter-Dark.svg",
+            "icon-light": "https://github.com/tandpfun/skill-icons/blob/main/icons/Flutter-Light.svg",
+            "type": "Frameworks & Databases"
+        },
+        {
+            "name": "PostgreSQL",
+            "icon-dark": "https://github.com/tandpfun/skill-icons/blob/main/icons/PostgreSQL-Dark.svg",
+            "icon-light": "https://github.com/tandpfun/skill-icons/blob/main/icons/PostgreSQL-Light.svg",
+            "type": "Frameworks & Databases"
+        },
+        {
+            "name": "MS SQL Server",
+            "icon-dark": "https://icon.icepanel.io/Technology/png-shadow-512/Microsoft-SQL-Server.png",
+            "icon-light": "https://icon.icepanel.io/Technology/png-shadow-512/Microsoft-SQL-Server.png",
+            "type": "Frameworks & Databases"
+        },
+        {
+            "name": "Redis",
+            "icon-dark": "https://github.com/tandpfun/skill-icons/blob/main/icons/Redis-Dark.svg",
+            "icon-light": "https://github.com/tandpfun/skill-icons/blob/main/icons/Redis-Light.svg",
+            "type": "Frameworks & Databases"
+        },
+        {
+            "name": "MongoDB",
+            "icon-dark": "https://github.com/tandpfun/skill-icons/blob/main/icons/MongoDB.svg",
+            "icon-light": "https://github.com/tandpfun/skill-icons/blob/main/icons/MongoDB.svg",
+            "type": "Frameworks & Databases"
+        },
+        {
+            "name": "Kafka",
+            "icon-dark": "https://github.com/tandpfun/skill-icons/blob/main/icons/Kafka.svg",
+            "icon-light": "https://github.com/tandpfun/skill-icons/blob/main/icons/Kafka.svg",
+            "type": "Frameworks & Databases"
+        },
+        {
+            "name": "Cassandra",
+            "icon-dark": "https://github.com/tandpfun/skill-icons/blob/main/icons/Cassandra-Dark.svg",
+            "icon-light": "https://github.com/tandpfun/skill-icons/blob/main/icons/Cassandra-Light.svg",
+            "type": "Frameworks & Databases"
+        },
+        {
+            "name": "Hive",
+            "type": "Frameworks & Databases"
+        },
+        {
+            "name": "Iceberg",
+            "type": "Frameworks & Databases"
+        },
+        {
+            "name": "AWS",
+            "icon-dark": "https://github.com/tandpfun/skill-icons/blob/main/icons/AWS-Dark.svg",
+            "icon-light": "https://github.com/tandpfun/skill-icons/blob/main/icons/AWS-Light.svg",
+            "type": "Cloud & DevOps"
+        },
+        {
+            "name": "Docker",
+            "icon-dark": "https://github.com/tandpfun/skill-icons/blob/main/icons/Docker.svg",
+            "icon-light": "https://github.com/tandpfun/skill-icons/blob/main/icons/Docker.svg",
+            "type": "Cloud & DevOps"
+        },
+        {
+            "name": "Kubernetes",
+            "icon-dark": "https://github.com/tandpfun/skill-icons/blob/main/icons/Kubernetes.svg",
+            "icon-light": "https://github.com/tandpfun/skill-icons/blob/main/icons/Kubernetes.svg",
+            "type": "Cloud & DevOps"
+        },
+        {
+            "name": "Github Actions",
+            "icon-dark": "https://github.com/tandpfun/skill-icons/blob/main/icons/GithubActions-Dark.svg",
+            "icon-light": "https://github.com/tandpfun/skill-icons/blob/main/icons/GithubActions-Light.svg",
+            "type": "Cloud & DevOps"
+        },
+        {
+            "name": "Firebase",
+            "icon-dark": "https://github.com/tandpfun/skill-icons/blob/main/icons/Firebase-Dark.svg",
+            "icon-light": "https://github.com/tandpfun/skill-icons/blob/main/icons/Firebase-Light.svg",
+            "type": "Cloud & DevOps"
+        },
+        {
+            "name": "Supabase",
+            "icon-dark": "https://github.com/tandpfun/skill-icons/blob/main/icons/Supabase-Dark.svg",
+            "icon-light": "https://github.com/tandpfun/skill-icons/blob/main/icons/Supabase-Light.svg",
+            "type": "Cloud & DevOps"
+        },
+        {
+            "name": "Appwrite",
+            "icon-dark": "https://github.com/tandpfun/skill-icons/blob/main/icons/Appwrite.svg",
+            "icon-light": "https://github.com/tandpfun/skill-icons/blob/main/icons/Appwrite.svg",
+            "type": "Cloud & DevOps"
+        },
+        {
+            "name": "Git",
+            "icon-dark": "https://github.com/tandpfun/skill-icons/blob/main/icons/Git.svg",
+            "icon-light": "https://github.com/tandpfun/skill-icons/blob/main/icons/Git.svg",
+            "type": "Tools & Practices"
+        },
+        {
+            "name": "GitHub",
+            "icon-dark": "https://github.com/tandpfun/skill-icons/blob/main/icons/Github-Dark.svg",
+            "icon-light": "https://github.com/tandpfun/skill-icons/blob/main/icons/Github-Light.svg",
+            "type": "Tools & Practices"
+        },
+        {
+            "name": "BitBucket",
+            "icon-dark": "https://github.com/tandpfun/skill-icons/blob/main/icons/BitBucket-Dark.svg",
+            "icon-light": "https://github.com/tandpfun/skill-icons/blob/main/icons/BitBucket-Light.svg",
+            "type": "Tools & Practices"
+        },
+        {
+            "name": "Microservices",
+            "type": "Tools & Practices"
+        },
+        {
+            "name": "Rest APIs",
+            "type": "Tools & Practices"
+        },
+        {
+            "name": "System Design",
+            "type": "Tools & Practices"
+        },
+        {
+            "name": "DSA",
+            "type": "Tools & Practices"
+        },
+        {
+            "name": "Data Lakes",
+            "type": "Tools & Practices"
+        },
+        {
+            "name": "Data Modelling",
+            "type": "Tools & Practices"
+        },
+        {
+            "name": "Metadata-driven Pipeline",
+            "type": "Tools & Practices"
+        },
+        {
+            "name": "Linux fundamentals",
+            "icon-dark": "https://github.com/tandpfun/skill-icons/blob/main/icons/Linux-Dark.svg",
+            "icon-light": "https://github.com/tandpfun/skill-icons/blob/main/icons/Linux-Light.svg",
+            "type": "Tools & Practices"
+        },
+        {
+            "name": "HTML",
+            "icon-dark": "https://github.com/tandpfun/skill-icons/blob/main/icons/HTML.svg",
+            "icon-light": "https://github.com/tandpfun/skill-icons/blob/main/icons/HTML.svg",
+            "type": "Tools & Practices"
+        },
+        {
+            "name": "CSS",
+            "icon-dark": "https://github.com/tandpfun/skill-icons/blob/main/icons/CSS.svg",
+            "icon-light": "https://github.com/tandpfun/skill-icons/blob/main/icons/CSS.svg",
+            "type": "Tools & Practices"
+        },
+        {
+            "name": "TailwindCSS",
+            "icon-dark": "https://github.com/tandpfun/skill-icons/blob/main/icons/TailwindCSS-Dark.svg",
+            "icon-light": "https://github.com/tandpfun/skill-icons/blob/main/icons/TailwindCSS-Light.svg",
+            "type": "Tools & Practices"
+        },
+        {
+            "name": "ETL & ELT",
+            "type": "Tools & Practices"
+        }
+    ]
+} 
