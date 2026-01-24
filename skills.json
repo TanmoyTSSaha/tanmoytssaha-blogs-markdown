@@ -229,6 +229,16 @@
         {
             "name": "ETL & ELT",
             "type": "Tools & Practices"
+        },
+        {
+            "name": "Jira",
+            "icon-dark": "https://icon.icepanel.io/Technology/svg/Jira.svg",
+            "icon-light": "https://icon.icepanel.io/Technology/svg/Jira.svg",
+            "type": "Tools & Practices"
+        },
+        {
+            "name": "Agile",
+            "type": "Tools & Practices"
         }
     ]
 } 
