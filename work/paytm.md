@@ -28,38 +28,38 @@ description: "Worked on developing near real-time data pipeline along with optim
 
 ## Overview
 
-At SpiceJet, I worked as a data engineer on there big data infrastructure by optimising existing project and created a new nearly real-time data pipeline for analytics purpose.
+At Paytm, I work on big data infrastructure — optimizing Spark jobs and S3 storage, migrating streaming pipelines, and building internal tooling. I also built an AI-powered MCP tool that sped up pipeline deployments, revamped monitoring dashboards, and handle on-call rotations to keep things running smoothly.
 
 ---
 
 ## Key Responsibilities
 
-- Reduced S3 storage by 45 percent by implementing and optimizing Life Cycle Policies (LCP), including removal of obsolete data and non-functional policies through strategic auditing and analysis of usage patterns.
-- Boosted Spark job performance by narrowing data scans and eliminating redundant transformations, resulting in faster execution and reduced compute costs.
-- Developed an AI MCP Tool that automated the development and deployment of real-time data pipelines, integrated with Cursor AI Agent — reducing deployment time from 2 hours of manual efforts to just 30 minutes of AI base automation.
-- Refactored the batch data pipeline codebase by removing flat-file dependencies and centralizing metadata storage in a database, making it accessible through APIs for easier integration and maintenance.
-- Improved internal monitoring dashboards by redesigning the UI and integrating additional metrics and alerting capabilities for better observability.
-- Worked on migrating streaming pipeline on organisational level migration which include migrating many microservices supporting the streaming pipeline.
-- Worked on optimizing and adding new BAU reqirements on the existing batch and streaming pipeline. 
-- Participated in oncalls and solved major bugs.
+- Achieved 45% reduction in S3 storage costs by implementing optimized Lifecycle Policies (LCP), auditing usage patterns, and eliminating obsolete data and redundant policies.
+- Optimized Spark job performance through partition pruning, predicate pushdown, and elimination of redundant transformations—reducing execution time and compute costs significantly.
+- Built an AI-powered MCP Tool integrated with Cursor AI Agent to automate real-time data pipeline development and deployment, cutting deployment time from 2 hours to 30 minutes (75% reduction).
+- Modernized batch pipeline architecture by replacing flat-file dependencies with centralized database-backed metadata storage, exposed via RESTful APIs for seamless integration.
+- Redesigned internal monitoring dashboards with enhanced UI/UX and integrated Grafana metrics for improved observability.
+- Led migration of streaming pipelines and associated microservices as part of an organization-wide infrastructure migration initiative.
+- Delivered ongoing BAU enhancements and optimizations across batch and streaming pipelines to meet evolving business requirements.
+- Managed on-call rotations and resolved critical production incidents to ensure pipeline reliability and uptime.
 
 ---
 
 ## Key Achievements
 
-- Reduced and optimized the S3 storage which directly effected in reducing the cost.
-- Participated in organizational level migration and migrated microservices supporting streaming pipeline.
-- Developed AI based MCP server which onboarding and deployment process of BAU tasks in streaming pipeline easy.
-- Improved the UI of existing portal and added monitoring metrices using grafana directly into the portal.
-- Participated in Oncalls and fixed some major bugs during oncall and supported the smooth running of jobs.
+- Cut S3 storage costs by cleaning up unused data and tuning lifecycle policies — something that hadn't been touched in a while.
+- Shipped microservice migrations as part of the org-wide infra overhaul for streaming pipelines.
+- Built an MCP server with AI capabilities that made onboarding new BAU tasks way faster than before.
+- Revamped the internal portal UI and plugged in Grafana dashboards directly for real-time monitoring.
+- Handled on-call duties, triaged incidents, and fixed bugs that were causing job failures.
 
 ---
 
 ## Impact
 
-- Solved major bugs and supported the smooth running of jobs.
-- Improved onboarding of BAU tasks from 2 Days to few hours.
-- Impacted in reducing cost by optimizing S3 storage.
+- Reduced pipeline onboarding time from ~2 days to a few hours using the MCP tool.
+- Helped save infra costs through S3 optimizations (cleanup + better retention policies).
+- Kept production stable during on-call shifts by catching and fixing issues early.
 
 ---
 

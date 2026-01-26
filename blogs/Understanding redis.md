@@ -1,6 +1,17 @@
-# Understanding redis
-Date: 2025-12-29 <br>
-*Written by: Tanmoy Saha*
+---
+title: "Understanding Redis"
+slug: "understanding-redis"
+date: "2025-12-29"
+author: "Tanmoy Saha"
+tags:
+  - Redis
+  - Databases
+  - Backend
+  - Caching
+description: "A beginner-friendly introduction to Redis, its architecture, data types, and basic commands using Docker."
+draft: false
+reading_time: 8
+---
 
 #### What is redis?
 Redis is an in-memory database. It uses your RAM (Random Access Memory) to store the data and for this the read and write operations really fast in Redis. Normal databases like Postgres or MongoDB uses our normal storage (If we consider SSD) to store the data. And for this reason to read data from normal database it took 100-200 microseconds where as Redis need only 20 nanoseconds to read same data from the RAM. And that is why Redis uses RAM as primary storage. Redis does have an additional feature called disk persistence for durability, it stores the snapshot of cached data inside hard disk in background as a backup so, instance startup won't wipe-out the data. We store data in **key: value** format in Redis.
