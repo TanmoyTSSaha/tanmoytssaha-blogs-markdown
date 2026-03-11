@@ -1,6 +1,6 @@
 ---
-title: Kubernetes Series Dummy Blog
-slug: kubernetes-series-dummy-blog
+title: Getting started with Go!
+slug: getting-started-with-go
 date: 2026-03-11
 author: Tanmoy Saha
 tags:
@@ -9,7 +9,7 @@ tags:
   - learnings
   - programming
   - language
-description: A dummy blog post to validate nested series rendering.
+description: Kickoff to my Golang learning series—how I’m learning Go and a practical walk-through of core data types and values.
 reading_time: 10
 draft: false
 series: Golang Learnings
