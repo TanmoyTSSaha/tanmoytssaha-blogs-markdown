@@ -1,7 +1,7 @@
 ---
 id: paytm-data-engineer
 company: "Paytm"
-role: "Data Engineer"
+role: "Data Engineer - Growth Marketing"
 location: "Noida, IN"
 type: "Full-time"
 start_date: "2025-02-20"
