@@ -94,8 +94,10 @@ In Golang we have 3 types of sub-categories of numbers, integer is one of these 
 | int             | -2147483648 to 2147483647 or -9223372036854775808 to 9223372036854775807 | Depending operating system it can be 32 bit or 64 bit                                                                 |
 | uint            | 0 to 4294967295 or 0 to 18446744073709551615                             | Depending operating system it can be 32 bit or 64 bit                                                                 |
 | uintptr         |                                                                          | Large enough to hold the bit pattern of any pointer. Usually 32 bits on 32-bit systems and 64 bits on 64-bit systems. |
+
 Let's do a fun experiment here (*Found after searching about it on Gemini*)
 The fun fact is we do not need to memorize this huge numbers. We can fetch these number using a Go package called `math`. Trying it programmatically - 
+
 ```
 package main
 
@@ -123,6 +125,7 @@ Float is second type out of 3 sub-categories. We have two types of floating-poin
 | ------------- | -------- | ----------------------- | --------------------------- | ----------------- |
 | float32       | 32       | 1.4 X 10<sup>-45</sup>  | 3.4028235 X 10<sup>38</sup> | ~7 digits         |
 | float64       | 64       | 4.9 X 10<sup>-324</sup> | 1.8 X 10<sup>308</sup>      | ~15 digits        |
+
 There are 3 different ways we can write out floating-point numbers in Golang. Here are these - 
 **1. Decimal Literals** - This is the standard way of writing numbers like 3.14, .5, 10. (Go stores these as float64)
 **2. Exponential Literals -** This is "Scientific notation" used for very large or very small number so we do not have to deal with dozens of zeros. e.g. `12e18`: 12 X 10<sup>18</sup>  (*The `e` can be lowercase or uppercase*) and `1e-3` is 0.0001 (*negative*).
@@ -135,6 +138,7 @@ There are 2 types of complex number we have in Golang. Complex numbers are built
 | ------------- | -------------- | ---------------------------------------------------------- |
 | complex64     | Two float32    | 32 bits for the real part, 32 bits for the imaginary part. |
 | complex128    | Two float64    | 64 bits for the real part, 64 bits for the imaginary part. |
+
 There are some built-in-functions in Golang for complex numbers - 
 - complex - It constructs a complex number. Both arguments must be of same floating-point type.
 - real(c) - It extracts the real component as float from the complex number.
