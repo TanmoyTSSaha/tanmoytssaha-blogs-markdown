@@ -1,0 +1,51 @@
+name: Build Resume Assets
+
+on:
+  push:
+    paths:
+      - "resume/resume.tex"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install LaTeX and LibreOffice
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            texlive-latex-base \
+            texlive-latex-extra \
+            texlive-fonts-extra \
+            libreoffice-writer
+
+      - name: Compile PDF
+        working-directory: resume
+        run: |
+          pdflatex -interaction=nonstopmode resume.tex
+          pdflatex -interaction=nonstopmode resume.tex
+          mv resume.pdf Tanmoy_Saha_Data_Engineering_Resume.pdf
+
+      - name: Convert to DOCX
+        working-directory: resume
+        run: |
+          libreoffice --headless --convert-to docx Tanmoy_Saha_Data_Engineering_Resume.pdf
+
+      - name: Commit generated assets
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add resume/Tanmoy_Saha_Data_Engineering_Resume.pdf resume/Tanmoy_Saha_Data_Engineering_Resume.docx
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+          git commit -m "chore: rebuild resume PDF and DOCX assets [skip ci]"
+          git push
