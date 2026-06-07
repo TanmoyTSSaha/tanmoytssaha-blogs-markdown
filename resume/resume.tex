@@ -1,0 +1,253 @@
+%-------------------------
+% Resume in Latex
+% Author : Jake Gutierrez
+% Based off of: https://github.com/sb2nov/resume
+% License : MIT
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{fontawesome5}
+\usepackage{multicol}
+\setlength{\multicolsep}{-3.0pt}
+\setlength{\columnsep}{-1pt}
+\input{glyphtounicode}
+
+
+%----------FONT OPTIONS----------
+% sans-serif
+% \usepackage[sfdefault]{FiraSans}
+% \usepackage[sfdefault]{roboto}
+% \usepackage[sfdefault]{noto-sans}
+% \usepackage[default]{sourcesanspro}
+
+% serif
+% \usepackage{CormorantGaramond}
+% \usepackage{charter}
+
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.6in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1.19in}
+\addtolength{\topmargin}{-.7in}
+\addtolength{\textheight}{1.4in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large\bfseries
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that generate pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\classesList}[4]{
+    \item\small{
+        {#1 #2 #3 #4 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{1.0\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & \textbf{\small #2} \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{1.001\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & \textbf{\small #2}\\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemi{$\vcenter{\hbox{\tiny$\bullet$}}$}
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.0in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+%----------HEADING----------
+\begin{center}
+    {\Huge \scshape Tanmoy Saha} \\ \vspace{1pt}
+    Amarpur, Tripura, India \\ \vspace{1pt}
+    \small \raisebox{-0.1\height}\faPhone\ +91 9366908415 ~ 
+    \href{mailto:contact@tanmoytssaha.cc}{\raisebox{-0.2\height}\faEnvelope\  \underline{contact@tanmoytssaha.cc}} ~ 
+    \href{https://www.linkedin.com/in/tanmoytssaha/}{\raisebox{-0.2\height}\faLinkedin\ \underline{Linkedin}} ~
+    \href{https://github.com/TanmoyTSSaha}{\raisebox{-0.2\height}\faGithub\ \underline{Github}} ~
+    \href{https://www.tanmoytssaha.cc}{\raisebox{-0.2\height}\faGlobe\ \underline{tanmoytssaha.cc}}
+
+\end{center}
+    \vspace{0pt}
+
+{Software Engineer with 3+ years building data infrastructure and AI tooling at scale. Experienced in Python, Go, Docker, and AWS, with hands-on exposure to LLM-based agent systems and AI model deployment on platforms including RunPod. Strong communicator comfortable translating technical complexity for non-technical stakeholders.}
+  
+%-----------PROGRAMMING SKILLS-----------
+\section{TECHNICAL SKILLS}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Languages: }{Python, SQL, Go, Scala, C++} \\
+     \textbf{AI and ML: }{MCP, LLM Orchestration, SDXL, Agentic Systems, RunPod} \\
+     \textbf{Distributed Systems and Data: }{Apache Spark, PySpark, Hive, Hadoop, Kafka} \\
+     \textbf{Cloud and Platform: }{AWS (S3, EMR, Glue, Lambda, Athena, EC2), Docker, Linux/Ubuntu} \\
+     \textbf{Data Architecture: }{ETL/ELT, Config-driven Pipelines, Data Modeling} \\
+     \textbf{Databases: }{PostgreSQL, SQL Server, MongoDB} \\
+     \textbf{Orchestration and DevOps: }{Step Functions, Airflow, Azkaban, Git} \\
+     \textbf{Observability: }{CloudWatch, Logging/Metrics/Alerting} \\
+     \textbf{Other: }{REST APIs, Django, DSA} \\
+    }}
+ \end{itemize}
+ \vspace{-15pt}
+
+ 
+%-----------EXPERIENCE-----------
+\section{EXPERIENCE}
+
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Paytm}{Feb 2025 -- Present}
+      {Data Engineer -- Central Data Platform}{Noida, Uttar Pradesh, India}
+      \resumeItemListStart
+        \resumeItem{Reduced S3 storage by 45 percent by implementing and optimizing Life Cycle Policies (LCP), including removal of
+ obsolete data and non-functional policies through strategic auditing and analysis of usage patterns.}
+        \resumeItem{Boosted Spark job performance by narrowing data scans and eliminating redundant transformations, resulting in faster
+ execution and reduced compute costs.}
+        \resumeItem{Built an AI agent tool using the Model Context Protocol (MCP), integrated with Cursor AI and LLM-based orchestration, automating data pipeline deployment — cutting deployment time from 2 hours to 30 minutes.}
+        \resumeItem{Refactored the batch data pipeline codebase by removing flat-file dependencies and centralizing metadata storage in a
+ database, making it accessible through APIs for easier integration and maintenance.}
+        \resumeItem{Improved internal monitoring dashboards by redesigning the UI and integrating additional metrics and alerting
+ capabilities for better observability.}
+        \resumeItem{Authored end-to-end technical documentation for the AI MCP Tool — covering architecture, integration guide, and usage workflows — and presented the solution to the engineering team and Director, driving org-wide adoption.}
+    \resumeItemListEnd
+  \resumeSubHeadingListEnd
+  \vspace{-5pt}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {SpiceJet}{Jan 2023 -- Feb 2025}
+      {Data Engineer}{Bengaluru, Karnataka, India}
+      \resumeItemListStart
+        \resumeItem{Designed and implemented an end-to-end near real-time data pipeline on AWS using PySpark, EMR, Glue, and Lambda to
+ support near real-time analytics.}
+        \resumeItem{Worked on optimizing and adding new requirements on the existing pipeline.}
+        \resumeItem{ Collaborated with stakeholders to develop data visualization dashboards using Django, HTML, TailwindCSS, and
+ JavaScript, providing actionable insights for decision-making.}
+        \resumeItem{Documented the near real-time AWS data pipeline architecture (PySpark, EMR, Glue, Lambda) with data flow diagrams and runbooks, and delivered a technical presentation to cross-functional stakeholders and the Director to align teams on pipeline design and capabilities.}
+    \resumeItemListEnd
+  \resumeSubHeadingListEnd
+  \vspace{-5pt}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Wielabs}{June 2022 -- Jan 2023}
+      {Software Development Engineer Intern}{Hyderabad, Telangana, India}
+      \resumeItemListStart
+        \resumeItem{Built scalable backend services using Python, Django, and PostgreSQL with optimized query patterns and modular API design.}
+        \resumeItem{Developed reusable UI components using Flutter, Tailwind, and JS to power a unified web/mobile experience.}
+        \resumeItemListEnd
+    \resumeSubHeadingListEnd
+\vspace{-8pt}
+%-----------PROJECTS-----------
+\section{PROJECTS}
+    \vspace{0pt}
+    \resumeSubHeadingListStart
+      \resumeProjectHeading
+          {\textbf{PantryAI – AI-Powered Kitchen App} $|$ \emph{Personal Project}}{\href{}{}}
+          \resumeItemListStart
+            \resumeItem{Built SDXL-based food image generation pipeline on RunPod serverless infrastructure for real-time inference.}
+            \resumeItem{Architected a Go backend with Flutter frontend; managed full deployment lifecycle on cloud GPU infrastructure.}
+          \resumeItemListEnd 
+          \vspace{-10pt}
+    \resumeProjectHeading
+          {\textbf{PRECOG – Flight DFDR Data Pipeline} $|$ SpiceJet \emph{}}{{}}
+          \resumeItemListStart
+            \resumeItem{Worked on scalable, multi-stage pipelines with PySpark to process flight DFDR data for analytics teams.}
+            \resumeItem{Implemented data governance and quality checks to ensure clean, actionable insights for operations.}
+          \resumeItemListEnd 
+          \vspace{-10pt}
+    \resumeProjectHeading
+          {\textbf{PRECOG – Flight DFDR Data Pipeline} $|$ SpiceJet \emph{}}{{}}
+          \resumeItemListStart
+            \resumeItem{Worked on scalable, multi-stage pipelines with PySpark to process flight DFDR data for analytics teams.}
+            \resumeItem{Implemented data governance and quality checks to ensure clean, actionable insights for operations.}
+          \resumeItemListEnd 
+          \vspace{-10pt}
+   \resumeProjectHeading
+          {\textbf{RateGain – Email Data Automation and Competitive Analysis } $|$ \emph{SpiceJet}}{\href{}{}}
+          \resumeItemListStart
+            \resumeItem{Automated extraction of CSV data from emails, saved as Parquet with partitioning for efficient querying.}
+            \resumeItem{Leveraged Spark for preprocessing and built staging tables for cost and competition analysis.}
+          \resumeItemListEnd 
+    \resumeSubHeadingListEnd
+\vspace{0pt}
+
+%
+%-----------EDUCATION-----------
+\section{EDUCATION}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Kalinga University, Raipur}{}
+      {Bachelor of Technology in Computer Science (CPGA - 8.61)}{Raipur, Chhattisgarh}
+  \resumeSubHeadingListEnd
+  \vspace{0pt}
+
+
+%-----------INVOLVEMENT---------------
+% \section{ACHIEVEMENT }
+%     \resumeSubHeadingListStart
+%         \resumeSubheading{120+ DSA Problems Solved }{}{}{}
+%             \resumeItemListStart
+%                 \resumeItem{I have solved over 120+ problems on platforms like LeetCode and GeeksforGeeks.  }
+%             \resumeItemListEnd
+        
+%     \resumeSubHeadingListEnd
+
+
+\end{document}
