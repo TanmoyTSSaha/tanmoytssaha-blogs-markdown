@@ -44,8 +44,33 @@ jobs:
 
       - name: Convert to DOCX
         working-directory: resume
+        env:
+          HOME: /tmp
         run: |
-          libreoffice --headless --convert-to docx Tanmoy_Saha_Data_Engineering_Resume.pdf
+          test -f Tanmoy_Saha_Data_Engineering_Resume.pdf
+          # PDF → ODT → DOCX: Writer's PDF import filter is required for step 1.
+          libreoffice \
+            --headless \
+            --norestore \
+            --nologo \
+            --nofirststartwizard \
+            "-env:UserInstallation=file:///tmp/libreoffice-profile" \
+            --infilter="writer_pdf_import" \
+            --convert-to odt \
+            --outdir . \
+            Tanmoy_Saha_Data_Engineering_Resume.pdf
+          test -f Tanmoy_Saha_Data_Engineering_Resume.odt
+          libreoffice \
+            --headless \
+            --norestore \
+            --nologo \
+            --nofirststartwizard \
+            "-env:UserInstallation=file:///tmp/libreoffice-profile" \
+            --convert-to docx:"MS Word 2007 XML" \
+            --outdir . \
+            Tanmoy_Saha_Data_Engineering_Resume.odt
+          test -f Tanmoy_Saha_Data_Engineering_Resume.docx
+          rm -f Tanmoy_Saha_Data_Engineering_Resume.odt
 
       - name: Commit generated assets
         run: |
