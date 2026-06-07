@@ -20,17 +20,26 @@ jobs:
       - name: Install LaTeX and LibreOffice
         run: |
           sudo apt-get update
-          sudo apt-get install -y --no-install-recommends \
+          sudo apt-get install -y \
             texlive-latex-base \
+            texlive-latex-recommended \
             texlive-latex-extra \
+            texlive-fonts-recommended \
             texlive-fonts-extra \
             libreoffice-writer
+
+      - name: Verify required LaTeX packages
+        run: |
+          kpsewhich marvosym.sty
+          kpsewhich fontawesome5.sty
+          kpsewhich fullpage.sty
 
       - name: Compile PDF
         working-directory: resume
         run: |
           pdflatex -interaction=nonstopmode resume.tex
           pdflatex -interaction=nonstopmode resume.tex
+          test -f resume.pdf
           mv resume.pdf Tanmoy_Saha_Data_Engineering_Resume.pdf
 
       - name: Convert to DOCX
