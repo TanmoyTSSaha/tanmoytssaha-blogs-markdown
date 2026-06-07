@@ -1,7 +1,7 @@
 ---
-title: Getting started with Go!
-slug: getting-started-with-go
-date: 2026-03-11
+title: Let's understand types of print in Go
+slug: lets-understand-types-of-print-in-go
+date: 2026-03-24
 author: Tanmoy Saha
 tags:
   - series
@@ -9,17 +9,19 @@ tags:
   - learnings
   - programming
   - language
+  - print
 description: Kickoff to my Golang learning series—how I’m learning Go and a practical walk-through of core data types and values.
 reading_time: 10
-draft: false
+draft: true
 series: Golang Learnings
 series_slug: golang-learnings
-series_order: 1
+series_order: 2
 ---
 
 ## What is this series is about and what will we cover in this series?
 
 This series is all about my learnings journey about Golang. How I dive deep to learn go. How I'm approaching to solve a problem using go. During learning what mistakes I'm making and what you can learn from these journey.
+Check out the first blog of this series - [Click here to visit](https://www.tanmoytssaha.cc/blog/getting-started-with-go)
 
 ## What am I following to learn Golang?
 
@@ -148,36 +150,6 @@ This is the end of this section.
 
 ### Section 2: Variables in Go.
 
-*Variable is a named location for a value*
 
-In this section we will be looking into variables in Go. In Go before declaring a variable it must be initialized. We can declare variable using var, const or using short declaration. Syntex for variable declaration - 
-
-```
-var nameOfTheVariable string
-___ _________________ ________
-     Variable name    Datatype
-```
-
-So here we have declared a variable. But we have not assigned anything or any value to this variable (or we have not initialized the variable). In  programming language if we declare variable and do not assign it, compiler will automatically assign a default value. But in Go, this will be assigned a **zero value**.
-
-```
-nameOfTheVariable = "This is the value of the variable"
-```
-So now we have assigned a value to the variable. If we didn't had assigned a value to this variable Go would have assigned it with an empty string ("" <- this is empty string) and this is called zero value. But it's for string data type. Following are the zero values for other data type - 
-
-| **Data type**                   | **Zero Value** |
-| ------------------------------- | -------------- |
-| Integers & floats               | 0              |
-| Booleans                        | false          |
-| Strings                         | ""             |
-| Pointers, Functions, Interfaces | nil            |
-| Slices, Channels, Maps          | nil            |
-
-| **Feature**           | **var**                     | **const**                |
-| --------------------- | --------------------------- | ------------------------ |
-| **Reassignable**      | Yes                         | No                       |
-| **Zero Value**        | Yes (if not initialized)    | No (must have a value)   |
-| **Initialization**    | At runtime or compile time  | **Only** at compile time |
-| **Short-hand (`:=`)** | Yes (inside functions only) | No                       |
 
 *Till then enjoy your life and happy engineering!*
