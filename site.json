@@ -1,0 +1,26 @@
+{
+  "siteUrl": "https://www.tanmoytssaha.cc",
+  "name": "Tanmoy Saha",
+  "title": "Tanmoy Saha",
+  "email": "contact@tanmoytssaha.cc",
+  "copyrightName": "Tanmoy Saha",
+  "socials": {
+    "github": "https://github.com/TanmoyTSSaha",
+    "linkedin": "https://linkedin.com/in/tanmoytssaha",
+    "x": "https://x.com/tanmoytssaha"
+  },
+  "nav": [
+    { "path": "/", "label": "Home", "exact": true },
+    { "path": "/work", "label": "Work", "exact": false },
+    { "path": "/projects", "label": "Projects", "exact": false },
+    { "path": "/blog", "label": "Blog", "exact": false },
+    { "path": "/resume", "label": "Resume", "exact": false }
+  ],
+  "seo": {
+    "titleSuffix": "Tanmoy Saha",
+    "blogDescription": "Blog posts by Tanmoy Saha on engineering, systems, and software craftsmanship."
+  },
+  "resume": {
+    "exportBasename": "Tanmoy_Saha_Data_Engineering_Resume"
+  }
+}

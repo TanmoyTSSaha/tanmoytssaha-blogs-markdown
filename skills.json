@@ -101,6 +101,26 @@
             "type": "Frameworks & Databases"
         },
         {
+            "name": "StarRocks",
+            "type": "Frameworks & Databases"
+        },
+        {
+            "name": "MySQL",
+            "type": "Frameworks & Databases"
+        },
+        {
+            "name": "MCP",
+            "type": "Frameworks & Databases"
+        },
+        {
+            "name": "LLM Orchestration",
+            "type": "Frameworks & Databases"
+        },
+        {
+            "name": "Agentic Systems",
+            "type": "Frameworks & Databases"
+        },
+        {
             "name": "Cassandra",
             "icon-dark": "https://raw.githubusercontent.com/tandpfun/skill-icons/65dea6c4eaca7da319e552c09f4cf5a9a8dab2c8/icons/Cassandra-Dark.svg",
             "icon-light": "https://raw.githubusercontent.com/tandpfun/skill-icons/65dea6c4eaca7da319e552c09f4cf5a9a8dab2c8/icons/Cassandra-Light.svg",
@@ -124,6 +144,26 @@
             "name": "Docker",
             "icon-dark": "https://raw.githubusercontent.com/tandpfun/skill-icons/65dea6c4eaca7da319e552c09f4cf5a9a8dab2c8/icons/Docker.svg",
             "icon-light": "https://raw.githubusercontent.com/tandpfun/skill-icons/65dea6c4eaca7da319e552c09f4cf5a9a8dab2c8/icons/Docker.svg",
+            "type": "Cloud & DevOps"
+        },
+        {
+            "name": "Step Functions",
+            "type": "Cloud & DevOps"
+        },
+        {
+            "name": "ArgoCD",
+            "type": "Cloud & DevOps"
+        },
+        {
+            "name": "Prometheus",
+            "type": "Cloud & DevOps"
+        },
+        {
+            "name": "Grafana",
+            "type": "Cloud & DevOps"
+        },
+        {
+            "name": "CloudWatch",
             "type": "Cloud & DevOps"
         },
         {
@@ -200,6 +240,22 @@
         },
         {
             "name": "Metadata-driven Pipeline",
+            "type": "Tools & Practices"
+        },
+        {
+            "name": "Micro-Batch Processing",
+            "type": "Tools & Practices"
+        },
+        {
+            "name": "Config-Driven Pipelines",
+            "type": "Tools & Practices"
+        },
+        {
+            "name": "Cursor",
+            "type": "Tools & Practices"
+        },
+        {
+            "name": "Claude",
             "type": "Tools & Practices"
         },
         {

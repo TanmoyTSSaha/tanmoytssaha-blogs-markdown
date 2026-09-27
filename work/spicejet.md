@@ -2,10 +2,10 @@
 id: spicejet-data-engineer
 company: "SpiceJet"
 role: "Data Engineer"
-location: "Bengaluru, IN"
+location: "Bengaluru, Karnataka, India"
 type: "Full-time"
-start_date: "2023-01-18"
-end_date: "2025-02-18"
+start_date: "2023-01-01"
+end_date: "2025-02-01"
 is_current: false
 company_url: "https://spicejet.com"
 logo_url: "https://cdn.brandfetch.io/id0DNBaeFO/theme/dark/logo.svg?c=1dxbfHSJFAPEGdCLU4o5B"
@@ -13,70 +13,62 @@ technologies:
   - Python
   - PySpark
   - AWS
-  - Microsoft SQL Server
+  - SQL
   - Hive
   - Hadoop
-  - Iceberg
   - Django
   - HTML
-  - CSS/TailwindCSS
-description: "Worked on developing near real-time data pipeline along with optimising existing projects"
+  - TailwindCSS
+  - JavaScript
+description: "Data Engineer building AWS-based flight telemetry pipelines, including the PRECOG DFDR pipeline processing ~3,000 files daily."
 ---
 
 ## Overview
 
-At SpiceJet, I worked on big data infrastructure — building a near real-time pipeline from scratch, improving batch processing workflows, and developing internal dashboards for stakeholders. Also worked closely with the DBA team on query monitoring tooling and set up alerting across pipelines.
+At SpiceJet, I developed and supported AWS-based data pipelines for large-scale flight telemetry data — including the PRECOG flight DFDR pipeline — and built internal dashboards giving operations teams visibility into business metrics.
 
 ---
 
 ## Key Responsibilities
 
-- Built a near real-time data pipeline from the ground up — pulling data from emails as they arrive, processing with PySpark, and storing in Iceberg tables (Parquet format).
-- Maintained and enhanced batch pipelines handling regular BAU tasks across the data platform.
-- Developed data visualization dashboards using Django + TailwindCSS to give stakeholders better visibility into business metrics.
-- Partnered with the DBA team to build a portal for tracking long-running queries that were hogging resources.
-- Set up alerting (email + Slack) to catch pipeline failures early.
+- Developed and supported AWS-based data pipelines using PySpark, EMR, Glue, Lambda, S3, Athena, EventBridge, and Step Functions for processing large-scale flight telemetry data.
+- Enhanced the PRECOG flight DFDR pipeline by adding and optimizing 66 exceedance parameters used for operational analysis and monitoring.
+- Optimized Spark processing workloads, implemented data quality and governance checks, and provided production support to improve reliability of downstream analytics.
+- Built and maintained multi-stage data processing workflows ingesting approximately 3,000 DFDR files daily and generating analytical datasets and exceedance reports for operations teams.
+- Collaborated with stakeholders to develop internal dashboards using Django, HTML, TailwindCSS, and JavaScript for operational insights.
+- Documented end-to-end AWS pipeline architecture, data flows, and runbooks, and presented the solution to cross-functional stakeholders and engineering leadership.
 
 ---
 
 ## Key Achievements
 
-- Shipped the near real-time pipeline end-to-end — from email ingestion to Iceberg storage — enabling analytics that weren't possible before.
-- Added pipeline alerting that helped catch failures before they snowballed.
-- Built dashboards that stakeholders actually used for day-to-day decision making.
-- Refactored batch pipelines into a metadata-driven framework, making onboarding new tasks much simpler.
+- Shipped 66 new exceedance parameters on the PRECOG pipeline for operational analysis and monitoring.
+- Built multi-stage workflows reliably ingesting ~3,000 DFDR files daily with data quality and governance checks.
+- Delivered dashboards and runbooks adopted by operations teams and engineering leadership.
 
 ---
 
 ## Impact
 
-- Enabled faster decision-making by giving stakeholders access to near real-time data instead of waiting for batch runs.
-- Cut BAU task onboarding time from ~1 week to 2-3 days after switching to the metadata-driven framework.
-- Made it easier for DBAs to spot and kill heavy queries before they caused issues.
+- Enabled operational analysis over flight telemetry at scale through reliable daily DFDR processing.
+- Improved downstream analytics reliability through Spark optimization and governance checks.
 
 ---
 
 ## Technologies Deep Dive
 
 ### Data Engineering
-- Pyspark
+- Python
+- PySpark
+- SQL
 - Hive
 - Hadoop
-- Iceberg
-- MS SQL Server
-
-### Fullstack
-- Python
-- Django
-- HTML
-- CSS
-- TailwindCSS
-- JavaScript
-
 
 ### Infrastructure
-- AWS (S3, ECR, EC2, EMR, Step Function, Lambda, Glue, EventBridge, Secret Manager)
-- Microsoft IIS (To deploy application)
+- AWS (S3, EMR, Glue, Lambda, Athena, EventBridge, Step Functions)
 
-### Observability
-- Alerting mechanism using emails and slack
+### Fullstack
+- Django
+- HTML
+- TailwindCSS
+- JavaScript

@@ -1,99 +1,101 @@
 ---
 id: paytm-data-engineer
 company: "Paytm"
-role: "Data Engineer - Growth Marketing"
-location: "Noida, IN"
+role: "Data Engineer -- Central Data Platform"
+location: "Noida, Uttar Pradesh, India"
 type: "Full-time"
-start_date: "2025-02-20"
+start_date: "2025-02-01"
 end_date: "Present"
 is_current: true
 company_url: "https://paytm.com/"
 logo_url: "https://cdn.iconscout.com/icon/free/png-512/free-paytm-icon-svg-download-png-226448.png"
 technologies:
   - Python
-  - Scala
+  - Go
+  - SQL
   - Spark
+  - Kafka
+  - StarRocks
   - AWS
-  - Hive
-  - Hadoop
-  - Iceberg
-  - ReactJS
-  - TailwindCSS
-  - Git
-  - BitBucket
+  - MySQL
+  - Cassandra
+  - Kubernetes
   - Docker
   - Azkaban
-description: "Worked on developing near real-time data pipeline along with optimising existing projects"
+  - ArgoCD
+  - Prometheus
+  - Grafana
+  - ReactJS
+description: "Data Engineer on the Central Data Platform, building near real-time marketing data infrastructure processing 90M+ user transaction records daily, plus AI-powered engineering automation."
 ---
 
 ## Overview
 
-At Paytm, I work on big data infrastructure — optimizing Spark jobs and S3 storage, migrating streaming pipelines, and building internal tooling. I also built an AI-powered MCP tool that sped up pipeline deployments, revamped monitoring dashboards, and handle on-call rotations to keep things running smoothly.
+At Paytm, I work on the Central Data Platform — building distributed data platforms, near real-time pipelines, and AI-powered engineering automation. My work spans cost and performance optimization of batch infrastructure as well as greenfield near real-time systems serving performance marketing at 90M+ user transaction records daily.
 
 ---
 
-## Key Responsibilities
+## Cost & Performance Optimization
 
-- Achieved 45% reduction in S3 storage costs by implementing optimized Lifecycle Policies (LCP), auditing usage patterns, and eliminating obsolete data and redundant policies.
-- Optimized Spark job performance through partition pruning, predicate pushdown, and elimination of redundant transformations—reducing execution time and compute costs significantly.
-- Built an AI-powered MCP Tool integrated with Cursor AI Agent to automate real-time data pipeline development and deployment, cutting deployment time from 2 hours to 30 minutes (75% reduction).
-- Modernized batch pipeline architecture by replacing flat-file dependencies with centralized database-backed metadata storage, exposed via RESTful APIs for seamless integration.
-- Redesigned internal monitoring dashboards with enhanced UI/UX and integrated Grafana metrics for improved observability.
-- Led migration of streaming pipelines and associated microservices as part of an organization-wide infrastructure migration initiative.
-- Delivered ongoing BAU enhancements and optimizations across batch and streaming pipelines to meet evolving business requirements.
-- Managed on-call rotations and resolved critical production incidents to ensure pipeline reliability and uptime.
+- Reduced S3 storage by 45% by auditing and optimizing lifecycle policies, removing obsolete data and non-functional policies based on storage usage patterns.
+- Improved Spark job performance by narrowing data scans and eliminating redundant transformations, reducing execution time and compute requirements.
 
 ---
 
-## Key Achievements
+## Near Real-Time Performance Marketing Platform
 
-- Cut S3 storage costs by cleaning up unused data and tuning lifecycle policies — something that hadn't been touched in a while.
-- Shipped microservice migrations as part of the org-wide infra overhaul for streaming pipelines.
-- Built an MCP server with AI capabilities that made onboarding new BAU tasks way faster than before.
-- Revamped the internal portal UI and plugged in Grafana dashboards directly for real-time monitoring.
-- Handled on-call duties, triaged incidents, and fixed bugs that were causing job failures.
+Built and deployed a configuration-driven near real-time marketing data platform processing 90M+ user transaction records daily, replacing D-1 vendor delivery with deterministic 30-minute micro-batch processing.
+
+- Designed the Kafka-to-StarRocks pipeline using Routine Load and a Kubernetes CronJob-driven Go orchestrator for deduplication and rule-based classification before publishing classified records to Kafka.
+- Built the DLQ and retry infrastructure, classifying failures by retryability and implementing exponential-backoff retries through vendor-specific Kafka topics; processed 3-4M records/hour with 1-2 minute end-to-end latency and >95% delivery success.
+- Developed the S3 export service and D-1 Spark/Azkaban reconciliation workflow to validate classified-versus-delivered counts, identify retryable failures, and republish eligible records for recovery.
+- Contributed to the Go orchestrator, enrichment router, API service, and ReactJS frontend, and deployed the complete application stack across 10 EKS services.
+- Implemented configuration-driven vendor payload generation using MySQL-backed configurations and AWS Secrets Manager for application credentials, enabling dynamic vendor onboarding without redesigning the core pipeline.
+
+---
+
+## MCP-Powered Real-Time Event Onboarding Automation
+
+Built a Python MCP server using Streamable HTTP to automate onboarding of real-time BAU events, reducing onboarding time from 2-3 hours to approximately 30 minutes.
+
+- Automated Jira validation, Confluent Schema Registry registration, YAML configuration generation using Jira and Confluence, Bitbucket changes, and Kubernetes deployment orchestration through Argo CD.
+- Integrated the workflow with Cursor, Claude, and internal AI agents, with Prometheus-based deployment tracking and Slack notifications for progress and failures; automated 30-40 deployments with 100% deployment success.
 
 ---
 
 ## Impact
 
-- Reduced pipeline onboarding time from ~2 days to a few hours using the MCP tool.
-- Helped save infra costs through S3 optimizations (cleanup + better retention policies).
-- Kept production stable during on-call shifts by catching and fixing issues early.
+- Replaced D-1 marketing data delivery with 30-minute micro-batch processing over 90M+ daily records.
+- Cut real-time event onboarding from 2-3 hours to ~30 minutes with fully automated deployments.
+- Saved infrastructure cost through S3 lifecycle optimization and Spark performance tuning.
 
 ---
 
 ## Technologies Deep Dive
 
 ### Data Engineering
-- Scala
-- Spark
-- Hive
-- Hadoop
-- Iceberg
-- Azkaban
-- Zeppelin
-- Kafka
-
-### Fullstack
 - Python
-- ReactJS
-- NodeJS
-- ExpressJS
-- HTML
-- CSS
-- TailwindCSS
-- JavaScript
-
+- Go
+- SQL
+- Spark
+- Kafka
+- StarRocks
+- MySQL
+- Cassandra
+- Azkaban
 
 ### Infrastructure
-- AWS (S3, ECR, EKS, EC2, EMR, Lambda, RDS)
+- AWS (S3, EKS, EC2, EMR, Lambda, RDS, Secrets Manager)
 - Docker
 - Kubernetes
-- Jenknins
 - ArgoCD
-- Linux`
+- BitBucket
 
 ### Observability
-- Alerting mechanism using emails and slack
-- Prometheus & Grafana
+- Prometheus
+- Grafana
+- Alerting via email and Slack
+
+### Fullstack
+- ReactJS
+- REST APIs
