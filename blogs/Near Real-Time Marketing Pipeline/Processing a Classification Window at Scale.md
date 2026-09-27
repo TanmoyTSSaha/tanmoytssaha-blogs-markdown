@@ -10,7 +10,7 @@ tags:
   - starrocks
   - classification
   - real-time
-description: Inside one classification window: the six stages, the execution ledger, and how the pipeline recovers without corrupting user state.
+description: "Inside one classification window - the six stages, the execution ledger, and how the pipeline recovers without corrupting user state."
 reading_time: 14
 draft: false
 series: Near Real-Time Marketing Pipeline

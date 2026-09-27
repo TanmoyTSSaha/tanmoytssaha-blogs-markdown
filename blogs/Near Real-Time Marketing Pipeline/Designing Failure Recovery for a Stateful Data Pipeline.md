@@ -10,7 +10,7 @@ tags:
   - recovery
   - reliability
   - real-time
-description: How the pipeline recovers from ambiguous state updates: snapshots, restore paths, stale-run detection, and ordered window recovery.
+description: "How the pipeline recovers from ambiguous state updates - snapshots, restore paths, stale-run detection, and ordered window recovery."
 reading_time: 18
 draft: false
 series: Near Real-Time Marketing Pipeline

@@ -10,7 +10,7 @@ tags:
   - delivery
   - reliability
   - real-time
-description: How classified events reach Kafka exactly as reliably as needed: checkpoints, keyset pagination, deterministic event ids, and replay-safe consumers.
+description: "How classified events reach Kafka exactly as reliably as needed - checkpoints, keyset pagination, deterministic event ids, and replay-safe consumers."
 reading_time: 16
 draft: false
 series: Near Real-Time Marketing Pipeline
