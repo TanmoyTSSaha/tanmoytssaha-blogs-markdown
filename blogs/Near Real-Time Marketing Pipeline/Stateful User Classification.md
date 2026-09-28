@@ -34,22 +34,6 @@ Run a state update twice, or let two windows touch state together, and cumulativ
 
 State handling boils down to this flow:
 
-```text
-User State
-   │
-   │ read during classification
-   ▼
-Temporary Classification Results
-   │
-   ├───────────────┐
-   │               │
-   ▼               ▼
-State Snapshot   State Update
-   │               │
-   ▼               ▼
-State Backup    Current User State
-```
-
 Three datasets take part.
 
 ### 1. Current user state
@@ -126,55 +110,17 @@ One engine handles first sightings and long accumulated histories alike:
 
 One user can walk more than one journey:
 
-```text
-                    User
-                     │
-            ┌────────┴────────┐
-            ▼                 ▼
-      Overall Journey    Vertical Journey
-            │                 │
-            ▼                 ▼
-       Current State      Current State
-       Counters           Counters
-```
-
 Each journey keeps its own current state, entry time, transaction counters, lifetime counters, and last transaction date. A transition in one journey leaves the other's state alone.
 
 ## What the current window computes first
 
 Classification writes temporary results before durable state moves:
 
-```text
-Current Window
-     │
-     ▼
-Classification
-     │
-     ▼
-Temporary Results
-     │
-     ├───────────────► State Snapshot
-     │
-     └───────────────► State Update
-```
-
 The temporary set holds the winning rule per user, journey, and transaction rank, plus whatever the state update needs later. Event generation stays out of it: one rule can emit many downstream events, but state updates read the transaction-level results so a single classification never counts twice through its many events.
 
 ## State snapshot
 
 The snapshot runs after classification, right before the durable update. The pipeline lists every `(user, journey)` pair the window will modify, then per pair:
-
-```text
-Does a current state row exist?
-          │
-     ┌────┴────┐
-     │         │
-    Yes        No
-     │         │
-     ▼         ▼
-Copy old     Record
-state        "no previous row"
-```
 
 It saves enough to rebuild the old state:
 
@@ -214,33 +160,11 @@ A good update makes the new state authoritative. A bad one leaves the snapshot t
 
 Snapshots get checked, not trusted. The pipeline writes the expected pairs, then counts snapshot rows against distinct `(user, journey)` pairs under classification:
 
-```text
-Pairs to update
-      │
-      ▼
-Create snapshot
-      │
-      ▼
-Compare counts
-   ┌──┴───┐
-   │      │
- Match   Mismatch
-   │      │
-   ▼      ▼
-Proceed  Fail
-```
-
 An incomplete snapshot stops the update. The pipeline never enters a state where some users restore and others cannot.
 
 ## State update
 
 Once the snapshot passes, classification results aggregate by `(user, journey)`. A window can hold several transactions per user, but the table takes one consolidated update each:
-
-```text
-Transaction 1 ─┐
-Transaction 2 ─┼─► Aggregate Window State ─► State Table
-Transaction 3 ─┘
-```
 
 ### Current state
 
@@ -519,28 +443,6 @@ Cumulative counters serve stateful classification, and their updates need explic
 ## A useful mental model
 
 The state pipeline works like a database transaction stretched across a workflow:
-
-```text
-               WINDOW
-                  │
-                  ▼
-          Build Classification
-                  │
-                  ▼
-           Snapshot State
-                  │
-                  ▼
-            Update State
-             ┌────┴────┐
-             │         │
-          Success    Failure
-             │         │
-             ▼         ▼
-         New State   Restore
-                       │
-                       ▼
-                     Retry
-```
 
 Each operation declares the state it needs first and how to rebuild the old state when it fails, instead of relying on blind retries.
 

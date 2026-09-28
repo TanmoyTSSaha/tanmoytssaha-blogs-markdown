@@ -521,37 +521,6 @@ Rewind reach ends where retention ends. That bound is a design trade, not an acc
 
 ## Failure recovery as a state machine
 
-```text
-                  ┌───────────────┐
-                  │   Processing  │
-                  │    Window     │
-                  └───────┬───────┘
-                          │
-                    Classification
-                          │
-                          ▼
-                   State Snapshot
-                          │
-                          ▼
-                    State Update
-                          │
-              ┌───────────┴───────────┐
-              │                       │
-          Successful               Uncertain
-              │                       │
-              ▼                       ▼
-           Publish                 Restore
-              │                       │
-              ▼                       ▼
-          Complete               Reclassify
-                                      │
-                                      ▼
-                                  New Snapshot
-                                      │
-                                      ▼
-                                  New Update
-```
-
 The pipeline transitions back to known state before repeating a non-idempotent operation. It never just retries commands.
 
 ## Design trade-offs
@@ -580,32 +549,11 @@ Rebuilding classification after restore repeats analytical work instead of patch
 
 Recovery keeps a known-good checkpoint:
 
-```text
-Known-good state
-      │
-      ▼
-Snapshot
-      │
-      ▼
-State transition
-      │
-      ├── Success ──► New known-good state
-      │
-      └── Failure ──► Restore previous checkpoint
-```
-
 The snapshot draws the line across which ambiguity stays recoverable.
 
 ## Closing thought
 
-The hardest failure in a stateful pipeline never announces itself as an error. It looks like an open question:
-
-```text
-Did the state update happen?
-        │
-        ├── Yes
-        └── No
-```
+The hardest failure in a stateful pipeline never announces itself as an error. It shows up as ambiguity about whether the state update happened.
 
 When neither answer is safe, the system restores known-good state, rebuilds the dependent work, applies the transition once, and continues delivery. That discipline travels beyond classification pipelines. Any workflow with cumulative, non-idempotent state changes recovers on the same five pieces: a known-good pre-state, explicit execution progress, clear failure boundaries, controlled concurrency, and a safe way to reconstruct the transition.
 

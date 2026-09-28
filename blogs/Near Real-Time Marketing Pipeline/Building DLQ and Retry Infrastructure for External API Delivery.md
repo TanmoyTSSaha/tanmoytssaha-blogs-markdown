@@ -31,35 +31,6 @@ Once a worker's local retry budget runs out, the event becomes a dead letter. A 
 
 ## The path
 
-```text
-Vendor Delivery Worker
-          │
-          ▼
-      External API
-          │
-   ┌──────┼─────────────┐
-   │      │             │
-success  retryable    permanent
-   │      │             │
-   ▼      ▼             ▼
-offset   retry       DLQ record
-commit   same batch      │
-                         ▼
-                  Retry Scheduler
-                         │
-                         ▼
-                 Canonical Kafka Topic
-                         │
-                         ▼
-                  Enrichment / Routing
-                         │
-                         ▼
-                  Vendor-specific topic
-                         │
-                         ▼
-                  Vendor Worker
-```
-
 Retries re-enter the normal event flow instead of skipping routing and enrichment.
 
 ## Why failures are split
@@ -99,17 +70,6 @@ The implementation keeps retryable, permanent, and legacy retryable failure reas
 ## Immediate retries inside the vendor worker
 
 Before anything becomes a DLQ record, the vendor worker retries transient failures in place:
-
-```text
-Kafka batch
-    │
-    ▼
-HTTP call
-    │
-    ├── success ──► commit offset
-    │
-    └── retryable ──► wait ──► same batch
-```
 
 Short outages clear in seconds, and handling them inline avoids writing a durable retry record for trouble that disappears on its own. The wait can come from the error itself:
 
@@ -174,15 +134,6 @@ Permanent records stay available for investigation and never enter automatic ret
 
 Dead-letter information lives in two places:
 
-```text
-                Failed Event
-                     │
-             ┌───────┴────────┐
-             ▼                ▼
-        Kafka DLQ         Durable DLQ Store
-       forensics copy      retry work queue
-```
-
 ### Kafka dead-letter stream
 
 An immutable long-lived event record with what debugging and forensics need.
@@ -201,31 +152,7 @@ Kafka keeps the event history. The database runs the retry queue.
 
 ## DLQ lifecycle
 
-A DLQ record typically moves:
-
-```text
-active
-  │
-  ▼
-retrying
-  │
-  ├── success ──► resolved
-  │
-  └── retryable failure ──► active
-                              │
-                              ▼
-                           retry again
-
-active
-  │
-  ▼
-retry cap reached
-  │
-  ▼
-exhausted
-```
-
-Permanent failures go terminal immediately:
+A DLQ record typically moves through active, retrying, and resolved states, with exhaustion as the other exit. Permanent failures go terminal immediately:
 
 ```text
 permanent
@@ -242,12 +169,6 @@ Event identity + target destination
 ```
 
 One canonical event fanning out looks like:
-
-```text
-Event X
- ├── Destination A → DLQ row A
- └── Destination B → DLQ row B
-```
 
 Destination A's failure state never overwrites Destination B's.
 
@@ -359,18 +280,7 @@ Identifiers and routing configuration may have changed since the first attempt, 
 
 ## Why the retry path can fan out again
 
-Retries return to canonical routing instead of aiming at the original vendor, so current routing rules evaluate fresh:
-
-```text
-Retry
-  ↓
-Canonical event
-  ↓
-Current routing rules
-  ├──► Destination A
-  ├──► Destination B
-  └──► Destination C
-```
+Retries return to canonical routing instead of aiming at the original vendor, so current routing rules evaluate fresh.
 
 The owning worker settles its destination's DLQ state once the external API succeeds. The retry mechanism stays generic by design.
 
@@ -448,41 +358,11 @@ DLQ retry budget
 
 ## Immediate retry versus durable retry
 
-```text
-          Vendor Failure
-               │
-       ┌───────┴────────┐
-       │                │
-   Short-lived       Needs later
-    problem           recovery
-       │                │
-       ▼                ▼
-In-process retry       DLQ
-       │                │
-       └───────┬────────┘
-               ▼
-           Final outcome
-```
-
 Short retries keep transient noise out of the DLQ. Durable retries recover failures that outlive the original consumer attempt.
 
 ## Isolating destinations
 
 Every destination owns a worker and a topic:
-
-```text
-                    Canonical Events
-                          │
-             ┌────────────┼────────────┐
-             ▼            ▼            ▼
-        Destination A  Destination B  Destination C
-             │            │            │
-          Worker A     Worker B     Worker C
-             │            │            │
-             ▼            ▼            ▼
-          External      External      External
-             APIs          APIs          APIs
-```
 
 Destination A failing never blocks B or C, and the shared retry system still tracks each DLQ row independently through the destination in its identity.
 

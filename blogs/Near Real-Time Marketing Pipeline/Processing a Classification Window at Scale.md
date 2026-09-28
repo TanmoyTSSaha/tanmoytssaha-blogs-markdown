@@ -24,23 +24,6 @@ The first post sketched the pipeline and the second covered ingestion. This one 
 
 ## The path
 
-```text
-Kubernetes CronJob
-        │
-        ▼
-Pipeline Orchestrator
-        │
-        ├─ Configuration Sync
-        ├─ Deduplication
-        ├─ Classification
-        ├─ State Snapshot
-        ├─ State Update
-        └─ Publish
-                  │
-                  ▼
-             Kafka Topic
-```
-
 The order is fixed. Publishing comes last, and a newer window does not start until the current one has finished or failed.
 
 ## Why a CronJob starts the pipeline
@@ -146,17 +129,7 @@ The execution ledger records every stage, so a wake skips stages that already su
 
 ## Stage 1: configuration sync
 
-Classification rules live outside the application code. Each window starts here:
-
-```text
-Relational Configuration Store
-              │
-              ▼
-       Configuration Sync
-              │
-              ▼
-      Analytical Rule Copy
-```
+Classification rules live outside the application code. Each window starts with a full copy of the active rule set synced from the relational store into the analytical layer.
 
 The pipeline copies the full active rule set before classifying. Rules can change through the configuration interface without a redeploy, and each window sees one consistent snapshot instead of catching a rule edit mid flight. When the sync fails, classification does not start.
 
@@ -184,86 +157,31 @@ Correctness-oriented analytical processing
 
 ## Stage 3: classification
 
-This is the core of the pipeline. The orchestrator builds classification queries from the current rule configuration and runs them over the window's users. Classification is mutually exclusive: each user ends the window in one appropriate state, not scattered across competing ones. Existing user state and the transaction history available to the analytical layer feed into the decision:
-
-```text
-Closed transaction window
-          │
-          ├──────────► Existing user state
-          │
-          ▼
-      Classification rules
-          │
-          ▼
-    Latest user classification
-          │
-          ▼
-     Temporary results
-```
+This is the core of the pipeline. The orchestrator builds classification queries from the current rule configuration and runs them over the window's users. Classification is mutually exclusive: each user ends the window in one appropriate state, not scattered across competing ones. Existing user state and the transaction history available to the analytical layer feed into the decision.
 
 The latest record per user inside the window drives the outcome, since that record decides the state applied for this window.
 
 ## Stage 4: state snapshot
 
-Classification rewrites user state, so the old state gets protected first:
-
-```text
-Current State
-     │
-     ▼
-State Snapshot
-     │
-     ▼
-Backup / Pre-update State
-```
+Classification rewrites user state, so the old state gets protected first in a snapshot that acts as a recovery point.
 
 The snapshot is a recovery point. When the update that follows fails halfway, the pipeline restores the previous state instead of layering another update over possibly corrupt data. That matters because the state table holds cumulative information, not disposable output.
 
 ## Stage 5: state update
 
-With the snapshot stored, the newly classified users go into current state:
-
-```text
-Temporary Classification
-          │
-          ▼
-      State Update
-          │
-          ▼
-      Current State
-```
+With the snapshot stored, the newly classified users go into current state.
 
 Updates carry the current classification plus lifetime counters and other state built up by earlier windows. Since the updates accumulate, running the same one twice is unsafe, which is why the pipeline tracks explicit stage state alongside the pre-update snapshot.
 
 ## Stage 6: publish
 
-After state updates land, the event delta goes to Kafka in chunks with progress persisted:
-
-```text
-Event Delta
-    │
-    ▼
-Chunk 1 ──► Kafka ──► checkpoint
-Chunk 2 ──► Kafka ──► checkpoint
-Chunk 3 ──► Kafka ──► checkpoint
-```
+After state updates land, the event delta goes to Kafka in chunks with progress persisted.
 
 Delivery here is at least once. A crash after Kafka acknowledges a chunk but before the checkpoint writes means that chunk goes out again on recovery, so downstream has to tolerate replays.
 
 ## Progress tracking
 
 The orchestrator keeps an execution ledger with every stage of every window:
-
-```text
-PENDING
-   │
-   ▼
-RUNNING
-   │
- ┌─┴───────────┐
- ▼             ▼
-SUCCESS       FAILED
-```
 
 Each entry carries current status, attempt info, start and completion timestamps, failure details, heartbeat data, and the latest published window. The ledger is what turns a string of SQL steps into a workflow that can resume.
 
@@ -274,17 +192,6 @@ A long stage keeps updating its execution state, so the next run can tell an act
 ## Failure boundaries
 
 Retries happen per stage:
-
-```text
-Window
-  │
-  ├── Config Sync      ✓
-  ├── Dedup            ✓
-  ├── Classify         ✗
-  ├── State Snapshot   not started
-  ├── State Update     not started
-  └── Publish          not started
-```
 
 The next wake resumes at the failed stage instead of replaying the ones that already passed.
 

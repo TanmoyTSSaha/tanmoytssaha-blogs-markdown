@@ -44,19 +44,6 @@ One application image serves many destinations. A runtime vendor identifier pick
 
 An administrative API manages vendor configuration in a relational database, split four ways:
 
-```text
-                    Vendor Configuration
-                           │
-          ┌────────────────┼─────────────────┐
-          ▼                ▼                 ▼
-       Routing          Delivery          Credentials
-       rules            config                │
-          │                │                   │
-          └────────────────┼───────────────────┘
-                           ▼
-                    Payload Templates
-```
-
 Routing, delivery behavior, credentials, and payload fields stay apart. A new destination usually means configuration plus an isolated worker deployment, not core pipeline surgery.
 
 ## What is stored per vendor
@@ -112,17 +99,6 @@ Classification never learns which destination wants an event.
 
 A single canonical event can match several routing rules:
 
-```text
-                 Canonical Event
-                       │
-             ┌─────────┼─────────┐
-             ▼         ▼         ▼
-        Destination A Destination B Destination C
-             │         │         │
-             ▼         ▼         ▼
-           Topic A    Topic B    Topic C
-```
-
 Each destination gets its own downstream representation, so one business event reaches many platforms while classification stays vendor-blind.
 
 ## Why routing is configuration-driven
@@ -152,21 +128,6 @@ Processing code holds still while routing data moves, which pays off most when i
 ## Credentials are isolated
 
 Vendor credentials sit apart from general delivery configuration:
-
-```text
-Vendor Config
-     │
-     ├── URL
-     ├── batching
-     ├── rate limit
-     └── delivery behavior
-
-Vendor Credentials
-     │
-     ├── access token
-     ├── application identifier
-     └── other secrets
-```
 
 The worker resolves whatever a destination needs at request time. Secrets stay encrypted, never plain text. Encryption key names, environment variables, credential keys, and admin API paths stay out of this article.
 
@@ -263,28 +224,6 @@ A field transforms before landing on its destination path, which covers external
 ## Mandatory fields
 
 Payload configuration can mark fields mandatory:
-
-```text
-Read source field
-       │
-       ▼
-Value present?
-   ┌───┴────┐
-   │        │
-  Yes       No
-   │        │
-   ▼        ▼
-Transform  Default
-              │
-              ▼
-         Still empty?
-          ┌──┴───┐
-          │      │
-         No     Yes
-          │      │
-          ▼      ▼
-        Write   Failure
-```
 
 Validation runs before any HTTP request. An unresolvable mandatory field routes the event into the normal failure and DLQ flow instead of sending a broken external request.
 
@@ -531,20 +470,6 @@ Classification SQL keeps emitting the same internal semantics. The publisher kee
 
 Each destination runs its own worker process and Kafka topic:
 
-```text
-                 Canonical Events
-                       │
-            ┌──────────┼──────────┐
-            ▼          ▼          ▼
-        Destination A Destination B Destination C
-             │          │          │
-          Worker A    Worker B    Worker C
-             │          │          │
-             ▼          ▼          ▼
-          External    External    External
-             API         API         API
-```
-
 Destination A failing and retrying never stops the consumers behind the others. No single delivery queue and worker should sit in front of all vendors.
 
 ## Operational trade-offs
@@ -568,26 +493,6 @@ Some configuration refreshes live while other loads at startup. Operators need t
 ## A useful mental model
 
 Three layers carry the event:
-
-```text
-                 BUSINESS LAYER
-                      │
-                      ▼
-              Internal Event
-                      │
-                      ▼
-                ROUTING LAYER
-                      │
-              ┌───────┼───────┐
-              ▼       ▼       ▼
-           Vendor A Vendor B Vendor C
-              │       │       │
-              ▼       ▼       ▼
-             DELIVERY LAYER
-              │       │       │
-              ▼       ▼       ▼
-            External APIs
-```
 
 The business layer defines what the event means. Routing decides where it goes. Delivery decides how it looks and travels.
 

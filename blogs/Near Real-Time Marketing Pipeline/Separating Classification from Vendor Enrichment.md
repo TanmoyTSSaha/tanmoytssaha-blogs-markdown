@@ -42,29 +42,6 @@ The classification pipeline stays clear of vendor identifiers, routing rules, pa
 
 ## The path
 
-```text
-Analytical Classification
-          │
-          ▼
-   Canonical Event Topic
-          │
-          ▼
-    Enrichment Service
-          │
-          ├── Lookup user/device identifiers
-          │
-          └── Resolve routing configuration
-          │
-          ▼
- Vendor-specific Kafka Topics
-          │
-          ▼
-    Vendor Delivery Workers
-          │
-          ▼
-     External HTTP APIs
-```
-
 Classification produces an event with one canonical internal shape. Everything vendor-specific joins later.
 
 ## What classification should know
@@ -91,14 +68,6 @@ The canonical event carries the business decision with no downstream platform ba
 ## Why vendor identifiers are added later
 
 External platforms rarely agree on identity. One internal user maps outward like:
-
-```text
-Internal User ID
-      │
-      ├────► Vendor A User ID
-      ├────► Vendor B User ID
-      └────► Vendor C User ID
-```
 
 Stuffing every vendor identifier into the classification table would grow its schema with each new integration. The enrichment service resolves identifiers after classification instead, and the internal model never counts downstream integrations.
 
@@ -176,37 +145,11 @@ Delivery then decides per event whether a gap means acceptable, retryable for no
 
 External lookups add dependency risk, and a breaker keeps the enrichment service from hammering a failing dependency:
 
-```text
-             Lookup Dependency
-                    │
-          ┌─────────┴─────────┐
-          │                   │
-       Healthy             Failing
-          │                   │
-          ▼                   ▼
-       Lookup             Open breaker
-          │                   │
-          ▼                   ▼
-    Continue flow       Degrade / retry later
-```
-
 The breaker earns its keep on big batches: with many users and a dead dependency, the service flips to its degraded path instead of firing off thousands of doomed requests.
 
 ## Concurrency control
 
 Lookups for a batch with many distinct users can choke the dependency, so enrichment caps concurrent lookups instead of fanning out without bound:
-
-```text
-1000 users
-   │
-   ▼
-Bounded lookup concurrency
-   │
-   ├── Lookup
-   ├── Lookup
-   ├── Lookup
-   └── ...
-```
 
 The cap guards both sides. Its exact value is an implementation detail and stays out of this write-up.
 
@@ -260,32 +203,11 @@ The router holds the active configuration in memory and maps each event to its d
 
 A canonical event can match several routing rules at once:
 
-```text
-                    Canonical Event
-                          │
-              ┌───────────┼───────────┐
-              ▼           ▼           ▼
-           Vendor A    Vendor B    Vendor C
-            Topic       Topic       Topic
-```
-
 Every destination gets its own enriched copy, and classification never learns how many integrations exist.
 
 ## Why vendor topics are separate
 
 Each vendor gets its own Kafka topic:
-
-```text
-                 Canonical Event
-                       │
-          ┌────────────┼────────────┐
-          ▼            ▼            ▼
-      Vendor A      Vendor B      Vendor C
-       Topic         Topic         Topic
-          │            │            │
-          ▼            ▼            ▼
-       Worker A     Worker B     Worker C
-```
 
 When Vendor A goes down, its worker retries while Vendors B and C keep consuming:
 
@@ -301,32 +223,11 @@ One outage never blocks unrelated destinations.
 
 Internal event names need not match external ones:
 
-```text
-Internal Event
-      │
-      ▼
-Routing Configuration
-      │
-      ├──► Vendor A Event Name
-      ├──► Vendor B Event Name
-      └──► Vendor C Event Name
-```
-
 Different platforms name the same business event differently. Classification emits the internal semantic event, and routing translates it per destination.
 
 ## OS-specific routing
 
 Routing configuration can carry platform constraints:
-
-```text
-Event
- │
- ├── iOS       → Vendor A
- │
- ├── Android   → Vendor B
- │
- └── Any OS    → Vendor C
-```
 
 The router normalizes platform information before matching. Normalization internals stay out of this article.
 
@@ -347,21 +248,6 @@ A template field names a destination JSON path, a source event field, a default,
 ## Adding a new vendor
 
 New integrations land without touching the classification engine:
-
-```text
-Existing Platform
-      │
-      ├── Classification SQL
-      ├── Enrichment Service
-      └── Vendor Worker
-
-New Vendor
-      │
-      ├── Routing configuration
-      ├── Vendor topic
-      ├── Payload configuration
-      └── Worker deployment
-```
 
 That pays off more with every destination added. Deployment and configuration mechanics stay implementation-specific.
 
@@ -527,31 +413,6 @@ A canonical event avoids vendor coupling, but it has to carry enough for enrichm
 ## A useful mental model
 
 Four layers, four questions:
-
-```text
-┌─────────────────────────────┐
-│  1. Classification          │
-│  "What happened?"           │
-└──────────────┬──────────────┘
-               │
-               ▼
-┌─────────────────────────────┐
-│  2. Enrichment              │
-│  "What identifiers?"        │
-└──────────────┬──────────────┘
-               │
-               ▼
-┌─────────────────────────────┐
-│  3. Routing                 │
-│  "Where should it go?"      │
-└──────────────┬──────────────┘
-               │
-               ▼
-┌─────────────────────────────┐
-│  4. Delivery                │
-│  "How should it look?"      │
-└─────────────────────────────┘
-```
 
 ## Closing thought
 

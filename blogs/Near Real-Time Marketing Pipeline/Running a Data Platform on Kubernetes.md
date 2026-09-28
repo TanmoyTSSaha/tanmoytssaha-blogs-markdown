@@ -32,39 +32,6 @@ The administrative API manages configuration and audit records. Processing and d
 
 ## High-level architecture
 
-```text
-                     Admin UI
-                        │
-                        ▼
-                    Admin API
-                        │
-                        ▼
-                Relational Database
-                 config + audit
-                        │
-          ┌─────────────┼───────────────────┐
-          │             │                   │
-          ▼             ▼                   ▼
-   Pipeline CronJob   Enrichment        Retry Scheduler
-          │             │                   │
-          ▼             ▼                   ▼
-     Analytical      Identifier        Canonical Kafka
-      Processing      Lookup               Flow
-          │             │                   │
-          └───────┬─────┴───────────────────┘
-                  ▼
-           Vendor-specific topics
-                  │
-                  ▼
-           Delivery Workers
-                  │
-                  ▼
-            External APIs
-                  │
-                  ▼
-                 DLQ
-```
-
 The platform runs as independent workloads, not one monolithic application.
 
 ## Why Kubernetes fits the platform
@@ -119,19 +86,6 @@ Exact workload names and counts shift as the platform evolves, so those stay out
 
 One generic delivery-worker image deploys many times over:
 
-```text
-Generic Worker Image
-        │
-        ├── Deployment A
-        │      └── Destination A configuration
-        │
-        ├── Deployment B
-        │      └── Destination B configuration
-        │
-        └── Deployment C
-               └── Destination C configuration
-```
-
 The binary never changes. Only runtime configuration does. Vendor behavior stays configuration-driven, and every destination keeps its own failure and scaling boundary. A new standard destination reuses the same image instead of growing a new codebase.
 
 ## Control path versus data path
@@ -166,22 +120,6 @@ No event calls the administrative API mid-flight. A configuration API serves low
 
 Workloads notice configuration changes at different moments:
 
-```text
-Configuration Store
-       │
-       ├── Classification
-       │      ↓
-       │   next processing window
-       │
-       ├── Enrichment / Routing
-       │      ↓
-       │   periodic refresh
-       │
-       └── Delivery Workers
-              ↓
-           startup / reload
-```
-
 Updates are not globally instant, which suits deterministic processing better than flipping every component at the same instant. A classification window keeps the snapshot it started with while routing refreshes separately.
 
 ## Administrative API
@@ -202,36 +140,11 @@ It talks to the relational configuration database and the analytical store where
 
 Long-running services expose health apart from metrics:
 
-```text
-Application
-   │
-   ├── Health endpoint
-   │      ├── liveness
-   │      └── readiness
-   │
-   └── Metrics endpoint
-          └── Prometheus
-```
-
 Kubernetes reads health to decide traffic while Prometheus scrapes measurements on its own. Port numbers, service names, and internal URLs stay out of this description.
 
 ## Configuration and audit
 
 Configuration changes stay auditable:
-
-```text
-Admin Request
-     │
-     ▼
-Validation
-     │
-     ▼
-Configuration Update
-     │
-     ├────────► Current Configuration
-     │
-     └────────► Audit Record
-```
 
 An audit record names the table or configuration area, the record identity, the action, the actor, the old and new values, and the timestamp. Operations stay traceable with no source-code archaeology.
 
@@ -351,17 +264,6 @@ Offsets, retries, scaling, rate limits, circuit breakers, and failure handling a
 ## Destination-specific scaling
 
 Long-running workers scale horizontally on Kubernetes:
-
-```text
-Kafka lag / CPU / workload
-          │
-          ▼
-        HPA
-          │
-     ┌────┴────┐
-     ▼         ▼
- Worker 1    Worker 2
-```
 
 The scaling signal follows the workload and deployment. Replica bounds and thresholds stay environment-specific and out of this article.
 
@@ -494,19 +396,6 @@ Secret rotation never rebuilds the image. Plain configuration injects the same w
 
 Long-running workloads expose Prometheus-compatible metrics:
 
-```text
-Application
-     │
-     ▼
- /metrics
-     │
-     ▼
-Prometheus
-     │
-     ├── dashboards
-     └── alerts
-```
-
 Useful concepts include processing duration, Kafka throughput, consumer lag, delivery success and failure, DLQ volume, retry counts, and pipeline failures. Metric names, service labels, dashboard URLs, and alert definitions stay unpublished.
 
 ## Operational failure domains
@@ -516,23 +405,6 @@ The platform partitions into failure domains on purpose. Destination A down mean
 ## What shares a failure domain
 
 Some workloads unavoidably share dependencies:
-
-```text
-Classification
-   ├── Analytical Database
-   ├── Relational Database
-   └── Kafka
-
-Enrichment
-   ├── Kafka
-   ├── Lookup Store
-   └── Relational Configuration
-
-Delivery Worker
-   ├── Kafka
-   ├── Relational Configuration
-   └── External API
-```
 
 Incident response starts from these groups. One dependency dying never hits every component the same way.
 
@@ -620,39 +492,7 @@ Exports and partition cleanup never race latency-sensitive event processing.
 
 ## A useful mental model
 
-Five layers carry the platform:
-
-```text
-┌──────────────────────────────┐
-│       Control Plane          │
-│ UI / API / Config / Audit    │
-└──────────────┬───────────────┘
-               │
-               ▼
-┌──────────────────────────────┐
-│       Data Processing        │
-│ Ingestion / Classification   │
-│ Dedup / Stateful Processing  │
-└──────────────┬───────────────┘
-               │
-               ▼
-┌──────────────────────────────┐
-│          Routing             │
-│ Enrichment / Destination     │
-└──────────────┬───────────────┘
-               │
-               ▼
-┌──────────────────────────────┐
-│          Delivery            │
-│ Worker / Rate Limit / Retry  │
-└──────────────┬───────────────┘
-               │
-               ▼
-┌──────────────────────────────┐
-│       External Systems       │
-│ APIs / Object Storage / etc. │
-└──────────────────────────────┘
-```
+Five layers carry the platform, all standing on one shared foundation:
 
 Underneath all five:
 

@@ -400,32 +400,6 @@ The cursor advances only to the last record inside an accepted Kafka chunk. A re
 
 ## End to end view
 
-```text
-                 Classification
-                       │
-                       ▼
-              Enriched Event Delta
-                       │
-                       ▼
-                  Pagination
-                       │
-                       ▼
-                    Chunk
-                       │
-                       ▼
-                    Kafka
-                       │
-             ┌─────────┴─────────┐
-             │                   │
-          Acked              Not Acked
-             │                   │
-             ▼                   ▼
-        Checkpoint            Retry
-             │
-             ▼
-       Next Chunk
-```
-
 One boundary governs failure:
 
 ```text
@@ -461,28 +435,6 @@ Extra bookkeeping, and delivery retries can never reapply stateful classificatio
 ## A useful mental model
 
 The publishing layer works as a durable handoff cursor:
-
-```text
-                 Event Stream
-                     │
-                     ▼
-             ┌───────────────┐
-             │   Publisher   │
-             └───────┬───────┘
-                     │
-                 Chunk
-                     │
-                     ▼
-                   Kafka
-                     │
-                ACK received
-                     │
-                     ▼
-              Save cursor
-                     │
-                     ▼
-             Read next chunk
-```
 
 The cursor never promises everything behind it exists exactly once. It promises everything behind it reached Kafka with progress recorded. That distinction carries the whole at-least-once design.
 

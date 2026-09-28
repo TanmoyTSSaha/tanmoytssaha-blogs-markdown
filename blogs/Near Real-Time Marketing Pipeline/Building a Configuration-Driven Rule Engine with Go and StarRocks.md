@@ -148,15 +148,6 @@ Application / SQL change
 
 A rule engine that accepts anything becomes dangerous fast, so the API validates before storing. The main check is totality: for every journey with enabled rules, one enabled catch-all rule has to cover the leftovers:
 
-```text
-Journey
-  │
-  ├── Specific Rule A
-  ├── Specific Rule B
-  ├── Specific Rule C
-  └── Catch-All Rule
-```
-
 Without a catch-all, a transaction matching nothing narrow falls through unclassified.
 
 The configuration layer also checks rules that preserve a previous classification anchor. The standing policy:
@@ -198,18 +189,6 @@ A half synced configuration must never reach classification. And when the store 
 
 The configuration database manages configuration. The analytical engine scans the transaction window and joins it against user state and rules. So classification runs roughly like:
 
-```text
-Transactions
-     │
-     ├──────────────┐
-     ▼              ▼
-User State      Rule Copy
-     │              │
-     └──────┬───────┘
-            ▼
-       Classification
-```
-
 Joining the rule copy on the analytical cluster keeps it beside the big transaction and state scans. The API database remains the source of truth for editing, authentication, and audit needs.
 
 ## Why the classification SQL stays static
@@ -240,14 +219,6 @@ Rule text never turns into executable application code, which keeps the configur
 ## One winning rule per journey
 
 The classifier can run several journeys over one transaction:
-
-```text
-Transaction
-    │
-    ├────► Overall Journey
-    │
-    └────► Vertical-specific Journey
-```
 
 One transaction can join multiple independent journeys. Inside a single journey, selection stays exclusive. When several rules match, the system ranks them and picks exactly one winner:
 
@@ -286,14 +257,6 @@ It wins only when no higher priority specific rule matches, which keeps the fall
 ## One rule can emit multiple events
 
 A winning rule does not map to exactly one downstream event. One rule can name several:
-
-```text
-Winning Rule
-      │
-      ├──► Event A
-      ├──► Event B
-      └──► Event C
-```
 
 Enrichment expands the configured events into individual records:
 
@@ -436,30 +399,6 @@ A rule edit never touches a running window. Processing stays deterministic, and 
 ## A useful mental model
 
 Two planes make up the system:
-
-```text
-              CONTROL PLANE
-        ┌──────────────────────┐
-        │ Frontend / Admin API │
-        │ Rule validation      │
-        │ Configuration Store  │
-        └──────────┬───────────┘
-                   │
-                   ▼
-             Config Sync
-
-
-              DATA PLANE
-        ┌──────────────────────┐
-        │ Transaction data     │
-        │ User state            │
-        │ Rule copy             │
-        │ Classification SQL   │
-        └──────────┬───────────┘
-                   │
-                   ▼
-             Classified Output
-```
 
 The control plane decides what the rules are. The data plane runs those rules over the current window.
 

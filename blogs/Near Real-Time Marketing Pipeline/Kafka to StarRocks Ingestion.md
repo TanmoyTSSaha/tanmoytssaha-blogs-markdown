@@ -21,29 +21,7 @@ Last time I covered the overall shape of the pipeline. This post goes into the i
 
 <a href="https://app.eraser.io/workspace/2IoevTvZwqYpEQhiLpGq?diagram=2uU7HtVk0m7-BiY0m79j">View on Eraser<br /><img src="https://app.eraser.io/workspace/2IoevTvZwqYpEQhiLpGq/preview?diagram=2uU7HtVk0m7-BiY0m79j&type=embed" /></a>
 
-## The path
-
-```text
-Source Kafka Topic
-        |
-        | Avro events
-        | Schema Registry
-        v
-StarRocks Routine Load
-        |
-        | business-valid transaction filter
-        v
-Raw Transaction Table
-        |
-        v
-Pipeline Orchestrator
-        |
-        | reads a closed [window_start, window_end) slice
-        v
-Deduplicated Transaction Table
-```
-
-Routine Load is the ingestion writer. Deduplication comes later as a SQL stage run by the orchestrator, which never touches Kafka directly.
+Routine Load is the ingestion writer. Deduplication comes later as a SQL stage run by the orchestrator, which never touches Kafka directly. The full path is sketched in the diagram above: source topic, Routine Load with its validity filter, the raw table, and the orchestrator reading closed window slices into the deduplicated table.
 
 ## Why Kafka is the ingestion boundary
 

@@ -84,31 +84,11 @@ ROW_NUMBER() OVER (
 )
 ```
 
-The first arrival survives:
-
-```text
-Same identity
-    │
-    ├── Record A → ingested first → KEEP
-    ├── Record B → later          → DROP
-    └── Record C → later          → DROP
-```
-
-Window bounds use `ingested_at`, the same clock the orchestrator classifies on.
+The first arrival survives, and window bounds use `ingested_at`, the same clock the orchestrator classifies on.
 
 ## Cross-window deduplication
 
 The harder case is a duplicate that lands after its original window already closed. Here incoming records get compared against records that already survived in the deduplicated table, through three anti-joins in identity order:
-
-```text
-Incoming record
-      │
-      ├── Match payment-group identity? ──► duplicate
-      │
-      ├── Match payment reference? ───────► duplicate
-      │
-      └── Match transaction identity? ─────► duplicate
-```
 
 A record gets inserted only when no historical identity matches. Every match stays scoped to the same customer, and a tier joins the matching only when its identity field is actually present. Missing identifiers can never match unrelated history.
 
@@ -128,27 +108,7 @@ Records whose transaction date falls outside the band can slip through. That is 
 
 ## Late-arriving records
 
-Take one payment with two upstream records:
-
-```text
-Window A
-   └── Record A arrives
-          ↓
-      survives dedup
-          ↓
-       classified
-
-Window B
-   └── Record B arrives later
-          ↓
-      historical anti-join
-          ↓
-      matches Record A
-          ↓
-        dropped
-```
-
-Deduplication reaches past the current window. The historical anti-join lets a new arrival meet records accepted earlier.
+Take one payment with two upstream records: the late arrival meets the first through the historical anti-join, so deduplication reaches past the current window. The historical anti-join lets a new arrival meet records accepted earlier.
 
 ## Why ingestion does not solve this problem
 
@@ -163,20 +123,6 @@ So each layer answers one question. Ingestion asks whether a record is valid eno
 ## Why the work stays inside StarRocks
 
 Raw and deduplicated data already sit in the same cluster. The historical step anti-joins the incoming window against accepted records, and moving millions of rows out to the Go orchestrator for that would be wasteful:
-
-```text
-Kafka
-  │
-  ▼
-StarRocks
-  │
-  ├── Raw transaction table
-  │
-  └── Deduplicated transaction table
-          │
-          ▼
-      Classification
-```
 
 The orchestrator triggers the SQL and tracks its status. It does not process data.
 
@@ -242,30 +188,6 @@ Inside one window, the earliest ingested representation survives. Behavior stays
 ## A useful mental model
 
 Think of the dedup layer as a payment identity resolver sitting between ingestion and classification:
-
-```text
-              Continuous Kafka Ingestion
-                         │
-                         ▼
-                Raw Transaction Store
-                         │
-                         ▼
-              ┌─────────────────────┐
-              │     Deduplication   │
-              │                     │
-              │  1. Group identity  │
-              │  2. Payment ref     │
-              │  3. Transaction ID  │
-              │                     │
-              │  + historical check │
-              └──────────┬──────────┘
-                         │
-                         ▼
-                Accepted Payments
-                         │
-                         ▼
-                   Classification
-```
 
 Any event stream with redeliveries, multiple representations of one business event, incomplete identifiers, delayed arrivals, or stateful downstream work benefits from an identity layer with a clear correctness boundary instead of pushing every case into ingestion.
 

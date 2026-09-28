@@ -64,50 +64,7 @@ So the new design put StarRocks in as the analytical layer. Classification queri
 
 ## High level architecture
 
-The system looks like this:
-
-```text
-                Source Kafka
-                    │
-                    ▼
-              Routine Load
-                    │
-                    ▼
-              Raw Data Table
-                    │
-                    ▼
-        ┌─────────────────────────┐
-        │   Pipeline Orchestrator │
-        │                         │
-        │  1. Config Sync         │
-        │  2. Deduplication       │
-        │  3. Classification      │
-        │  4. State Snapshot      │
-        │  5. State Update        │
-        │  6. Publish             │
-        └────────────┬────────────┘
-                     │
-                     ▼
-              Classified Events
-                     │
-                     ▼
-             Enrichment Service
-                     │
-                     ▼
-        Vendor-Specific Kafka Topics
-                     │
-                     ▼
-             Delivery Workers
-                     │
-             ┌───────┴────────┐
-             ▼                ▼
-          Success          Failed Events
-                                │
-                                ▼
-                               DLQ
-```
-
-Kafka ingestion runs continuously through Routine Load. Then comes windowed orchestration, classification with state handling, Kafka publishing, enrichment, vendor specific routing, and delivery.
+The full picture is in the diagram at the top of this post. In prose:
 
 ## Why windowed processing
 
