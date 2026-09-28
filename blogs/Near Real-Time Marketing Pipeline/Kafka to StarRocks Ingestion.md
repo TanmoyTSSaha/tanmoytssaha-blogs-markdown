@@ -17,8 +17,9 @@ series: Near Real-Time Marketing Pipeline
 series_slug: near-real-time-marketing-pipeline
 series_order: 2
 ---
-
 Last time I covered the overall shape of the pipeline. This post goes into the ingestion layer: how transaction events get from Kafka into StarRocks, and why that path runs on its own clock while classification works in closed windows.
+
+<a href="https://app.eraser.io/workspace/2IoevTvZwqYpEQhiLpGq?diagram=2uU7HtVk0m7-BiY0m79j">View on Eraser<br /><img src="https://app.eraser.io/workspace/2IoevTvZwqYpEQhiLpGq/preview?diagram=2uU7HtVk0m7-BiY0m79j&type=embed" /></a>
 
 ## The path
 

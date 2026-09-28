@@ -17,9 +17,7 @@ series: Near Real-Time Marketing Pipeline
 series_slug: near-real-time-marketing-pipeline
 series_order: 10
 ---
-
 HTTP integrations fail, and a failed event should not freeze the whole pipeline. This design splits delivery problems into three tracks that run apart:
-
 ```text
 Normal delivery
      +
@@ -27,8 +25,9 @@ Immediate retries
      +
 Durable failure handling
 ```
-
 Once a worker's local retry budget runs out, the event becomes a dead letter. A separate retry process later decides whether it qualifies for automatic recovery, so the original consumer never sits blocked.
+
+<a href="https://app.eraser.io/workspace/2IoevTvZwqYpEQhiLpGq?diagram=2VRsxfthdjakJvsMIdMq">View on Eraser<br /><img src="https://app.eraser.io/workspace/2IoevTvZwqYpEQhiLpGq/preview?diagram=2VRsxfthdjakJvsMIdMq&type=embed" /></a>
 
 ## The path
 

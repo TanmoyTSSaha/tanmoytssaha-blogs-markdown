@@ -17,14 +17,11 @@ series: Near Real-Time Marketing Pipeline
 series_slug: near-real-time-marketing-pipeline
 series_order: 7
 ---
-
 A stateful classification pipeline recovers differently than a stateless batch job. The current window rewrites durable user state with cumulative changes. When an update may have partially or fully landed, running it again can corrupt the totals. Recovery sorts every failure into one of three buckets:
-
 ```text
 Failure before state protection
         ↓
 Retry normally
-
 Failure after state protection but before state-update success
         ↓
 Restore previous state
@@ -32,13 +29,13 @@ Restore previous state
 Rebuild classification
         ↓
 Apply state update once
-
 Failure after state update succeeds
         ↓
 Do not automatically roll back state
 ```
-
 The execution ledger decides which bucket each failure lands in.
+
+<a href="https://app.eraser.io/workspace/2IoevTvZwqYpEQhiLpGq?diagram=QAreWgIl3wfcP6UNTeLg">View on Eraser<br /><img src="https://app.eraser.io/workspace/2IoevTvZwqYpEQhiLpGq/preview?diagram=QAreWgIl3wfcP6UNTeLg&type=embed" /></a>
 
 ## The recovery path
 

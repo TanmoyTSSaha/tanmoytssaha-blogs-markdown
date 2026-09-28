@@ -17,9 +17,7 @@ series: Near Real-Time Marketing Pipeline
 series_slug: near-real-time-marketing-pipeline
 series_order: 9
 ---
-
 Classification should decide what happened to a user. It should not also decide how every downstream platform wants that event delivered:
-
 ```text
 Classification
      │
@@ -38,8 +36,9 @@ Vendor-specific Payload
      ▼
 External API
 ```
-
 The classification pipeline stays clear of vendor identifiers, routing rules, payload schemas, and delivery behavior.
+
+<a href="https://app.eraser.io/workspace/2IoevTvZwqYpEQhiLpGq?diagram=ul05sS2aqHAgHuH3L1fN">View on Eraser<br /><img src="https://app.eraser.io/workspace/2IoevTvZwqYpEQhiLpGq/preview?diagram=ul05sS2aqHAgHuH3L1fN&type=embed" /></a>
 
 ## The path
 

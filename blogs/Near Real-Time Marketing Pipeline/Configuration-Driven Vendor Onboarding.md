@@ -17,9 +17,7 @@ series: Near Real-Time Marketing Pipeline
 series_slug: near-real-time-marketing-pipeline
 series_order: 11
 ---
-
 New external integrations should land without touching the core classification pipeline. Vendor behavior lives in configuration behind a reusable delivery worker:
-
 ```text
 Classification
       │
@@ -38,8 +36,9 @@ Generic Delivery Worker
       ▼
 External API
 ```
-
 One application image serves many destinations. A runtime vendor identifier picks the configuration each worker runs with, keeping classification, enrichment, and publishing clear of any single platform's URL, auth style, batching habits, or JSON shape.
+
+<a href="https://app.eraser.io/workspace/2IoevTvZwqYpEQhiLpGq?diagram=aS7TeNgXEkjc-p2YySy0">View on Eraser<br /><img src="https://app.eraser.io/workspace/2IoevTvZwqYpEQhiLpGq/preview?diagram=aS7TeNgXEkjc-p2YySy0&type=embed" /></a>
 
 ## The configuration model
 

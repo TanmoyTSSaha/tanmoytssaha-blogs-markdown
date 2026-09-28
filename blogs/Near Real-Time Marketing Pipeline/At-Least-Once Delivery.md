@@ -17,16 +17,15 @@ series: Near Real-Time Marketing Pipeline
 series_slug: near-real-time-marketing-pipeline
 series_order: 8
 ---
-
 Moving classified events from the analytical platform into Kafka raises a different correctness question than classification. State transitions apply once. Delivery tolerates a message Kafka accepted while the publisher died before recording it:
-
 ```text
 Processing correctness
         +
 Delivery reliability
 ```
-
 The publish stage carries an explicit progress checkpoint. It resumes from the last recorded position and accepts a small replay window.
+
+<a href="https://app.eraser.io/workspace/2IoevTvZwqYpEQhiLpGq?diagram=1LLwBE-ClUoc1azjTujh">View on Eraser<br /><img src="https://app.eraser.io/workspace/2IoevTvZwqYpEQhiLpGq/preview?diagram=1LLwBE-ClUoc1azjTujh&type=embed" /></a>
 
 ## Two different guarantees
 

@@ -17,20 +17,18 @@ series: Near Real-Time Marketing Pipeline
 series_slug: near-real-time-marketing-pipeline
 series_order: 12
 ---
-
 A production data platform usually runs two distinct paths:
-
 ```text
 Control Path
     ↓
 Configuration, credentials, audit, operational controls
-
 Data Path
     ↓
 Ingestion → Classification → Enrichment → Delivery
 ```
-
 The administrative API manages configuration and audit records. Processing and delivery workloads read that configuration, while no classified event ever passes through the API. Operational configuration and high-volume event processing stay decoupled.
+
+<a href="https://app.eraser.io/workspace/2IoevTvZwqYpEQhiLpGq?diagram=ZijaOPad2KEhKMOVkEyh">View on Eraser<br /><img src="https://app.eraser.io/workspace/2IoevTvZwqYpEQhiLpGq/preview?diagram=ZijaOPad2KEhKMOVkEyh&type=embed" /></a>
 
 ## High-level architecture
 

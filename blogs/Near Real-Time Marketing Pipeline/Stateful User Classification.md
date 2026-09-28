@@ -17,9 +17,7 @@ series: Near Real-Time Marketing Pipeline
 series_slug: near-real-time-marketing-pipeline
 series_order: 6
 ---
-
 One window's transactions alone cannot decide a user's next state. The answer depends on what the previous window left behind, which makes this pipeline stateful:
-
 ```text
 Previous User State
         +
@@ -27,10 +25,10 @@ Current Window Transactions
         ↓
 New User State
 ```
-
 Run a state update twice, or let two windows touch state together, and cumulative counters go wrong. The pipeline guards against both by protecting current state before changing it and keeping enough around to restore it on failure.
-
 > **Important:** Production classifies hourly. The stages below work the same at shorter intervals such as 30 minutes.
+
+<a href="https://app.eraser.io/workspace/2IoevTvZwqYpEQhiLpGq?diagram=uyJYM3yTKfoWA24YLXMp">View on Eraser<br /><img src="https://app.eraser.io/workspace/2IoevTvZwqYpEQhiLpGq/preview?diagram=uyJYM3yTKfoWA24YLXMp&type=embed" /></a>
 
 ## The tables
 

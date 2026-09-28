@@ -17,9 +17,7 @@ series: Near Real-Time Marketing Pipeline
 series_slug: near-real-time-marketing-pipeline
 series_order: 5
 ---
-
 Production classification does not have to compile business rules into the application binary. Our rules live as configuration data. Each processing window syncs the active rules into the analytical engine, and the classification SQL itself never changes:
-
 ```text
 Rule Management
       │
@@ -38,8 +36,9 @@ Static Classification SQL
       ▼
 Classified Users
 ```
-
 Business rule edits ship without rebuilding or redeploying the pipeline.
+
+<a href="https://app.eraser.io/workspace/2IoevTvZwqYpEQhiLpGq?diagram=IAWoC2XS0q3aJvCfNxR-">View on Eraser<br /><img src="https://app.eraser.io/workspace/2IoevTvZwqYpEQhiLpGq/preview?diagram=IAWoC2XS0q3aJvCfNxR-&type=embed" /></a>
 
 ## The path
 

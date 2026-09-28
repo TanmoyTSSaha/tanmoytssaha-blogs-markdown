@@ -17,10 +17,10 @@ series: Near Real-Time Marketing Pipeline
 series_slug: near-real-time-marketing-pipeline
 series_order: 4
 ---
-
 Deduplication is its own SQL stage in the classification pipeline. It reads the current ingestion window from the raw transaction table and writes the survivors into a separate deduplicated table. Classification only ever reads the deduplicated side.
-
 The core identity is not one key. The design runs a three-tier identity model, with `customer_id + transaction_id` as the last fallback.
+
+<a href="https://app.eraser.io/workspace/2IoevTvZwqYpEQhiLpGq?diagram=jTpC0tTJC2EM0vrpaynN">View on Eraser<br /><img src="https://app.eraser.io/workspace/2IoevTvZwqYpEQhiLpGq/preview?diagram=jTpC0tTJC2EM0vrpaynN&type=embed" /></a>
 
 ## The three-tier identity model
 
