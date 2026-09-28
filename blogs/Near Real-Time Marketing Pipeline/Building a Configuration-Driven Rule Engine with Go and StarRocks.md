@@ -38,7 +38,7 @@ Classified Users
 ```
 Business rule edits ship without rebuilding or redeploying the pipeline.
 
-<a href="https://app.eraser.io/workspace/2IoevTvZwqYpEQhiLpGq?diagram=IAWoC2XS0q3aJvCfNxR-">View on Eraser<br /><img src="https://app.eraser.io/workspace/2IoevTvZwqYpEQhiLpGq/preview?diagram=IAWoC2XS0q3aJvCfNxR-&type=embed" /></a>
+<a href="https://app.eraser.io/workspace/2IoevTvZwqYpEQhiLpGq?diagram=IAWoC2XS0q3aJvCfNxR-">View on Eraser<br /><img src="https://raw.githubusercontent.com/TanmoyTSSaha/tanmoytssaha-blogs-markdown/main/blogs/Near%20Real-Time%20Marketing%20Pipeline/assets/hld-05-rules.png" /></a>
 
 ## The path
 

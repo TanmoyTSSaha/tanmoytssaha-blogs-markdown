@@ -20,7 +20,7 @@ series_order: 3
 The first post sketched the pipeline and the second covered ingestion. This one goes inside a classification window: the six stages it passes through, and how each stage is built to fail safely.
 > **Important:** This article uses a 30-minute window as the running example. Production currently classifies hourly. The stages are identical either way, and the pipeline supports sub-hourly intervals without changing them.
 
-<a href="https://app.eraser.io/workspace/2IoevTvZwqYpEQhiLpGq?diagram=hGqAbBBwlesmAPmZFwQm">View on Eraser<br /><img src="https://app.eraser.io/workspace/2IoevTvZwqYpEQhiLpGq/preview?diagram=hGqAbBBwlesmAPmZFwQm&type=embed" /></a>
+<a href="https://app.eraser.io/workspace/2IoevTvZwqYpEQhiLpGq?diagram=hGqAbBBwlesmAPmZFwQm">View on Eraser<br /><img src="https://raw.githubusercontent.com/TanmoyTSSaha/tanmoytssaha-blogs-markdown/main/blogs/Near%20Real-Time%20Marketing%20Pipeline/assets/hld-03-window.png" /></a>
 
 ## The path
 

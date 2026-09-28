@@ -20,7 +20,7 @@ series_order: 1
 
 This series walks through a near real time marketing pipeline we built: how it replaced a daily batch setup, and the design calls behind ingestion, windowing, state, and delivery. This first post covers the problem and the overall shape of the system. Later posts will go deeper into each stage.
 
-<a href="https://app.eraser.io/workspace/2IoevTvZwqYpEQhiLpGq?diagram=0EIZ2NZ0rPlb3r4yxnBH">View on Eraser<br /><img src="https://app.eraser.io/workspace/2IoevTvZwqYpEQhiLpGq/preview?diagram=0EIZ2NZ0rPlb3r4yxnBH&type=embed" /></a>
+<a href="https://app.eraser.io/workspace/2IoevTvZwqYpEQhiLpGq?diagram=0EIZ2NZ0rPlb3r4yxnBH">View on Eraser<br /><img src="https://raw.githubusercontent.com/TanmoyTSSaha/tanmoytssaha-blogs-markdown/main/blogs/Near%20Real-Time%20Marketing%20Pipeline/assets/hld-01-overview.png" /></a>
 
 ## The problem: D-1 marketing data
 

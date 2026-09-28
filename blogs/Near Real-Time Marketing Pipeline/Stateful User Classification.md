@@ -28,7 +28,7 @@ New User State
 Run a state update twice, or let two windows touch state together, and cumulative counters go wrong. The pipeline guards against both by protecting current state before changing it and keeping enough around to restore it on failure.
 > **Important:** Production classifies hourly. The stages below work the same at shorter intervals such as 30 minutes.
 
-<a href="https://app.eraser.io/workspace/2IoevTvZwqYpEQhiLpGq?diagram=uyJYM3yTKfoWA24YLXMp">View on Eraser<br /><img src="https://app.eraser.io/workspace/2IoevTvZwqYpEQhiLpGq/preview?diagram=uyJYM3yTKfoWA24YLXMp&type=embed" /></a>
+<a href="https://app.eraser.io/workspace/2IoevTvZwqYpEQhiLpGq?diagram=uyJYM3yTKfoWA24YLXMp">View on Eraser<br /><img src="https://raw.githubusercontent.com/TanmoyTSSaha/tanmoytssaha-blogs-markdown/main/blogs/Near%20Real-Time%20Marketing%20Pipeline/assets/hld-06-state.png" /></a>
 
 ## The tables
 

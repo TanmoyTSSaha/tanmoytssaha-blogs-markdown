@@ -38,7 +38,7 @@ External API
 ```
 The classification pipeline stays clear of vendor identifiers, routing rules, payload schemas, and delivery behavior.
 
-<a href="https://app.eraser.io/workspace/2IoevTvZwqYpEQhiLpGq?diagram=ul05sS2aqHAgHuH3L1fN">View on Eraser<br /><img src="https://app.eraser.io/workspace/2IoevTvZwqYpEQhiLpGq/preview?diagram=ul05sS2aqHAgHuH3L1fN&type=embed" /></a>
+<a href="https://app.eraser.io/workspace/2IoevTvZwqYpEQhiLpGq?diagram=ul05sS2aqHAgHuH3L1fN">View on Eraser<br /><img src="https://raw.githubusercontent.com/TanmoyTSSaha/tanmoytssaha-blogs-markdown/main/blogs/Near%20Real-Time%20Marketing%20Pipeline/assets/hld-09-enrichment.png" /></a>
 
 ## The path
 

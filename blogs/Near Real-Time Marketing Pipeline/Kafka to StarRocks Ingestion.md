@@ -19,7 +19,7 @@ series_order: 2
 ---
 Last time I covered the overall shape of the pipeline. This post goes into the ingestion layer: how transaction events get from Kafka into StarRocks, and why that path runs on its own clock while classification works in closed windows.
 
-<a href="https://app.eraser.io/workspace/2IoevTvZwqYpEQhiLpGq?diagram=2uU7HtVk0m7-BiY0m79j">View on Eraser<br /><img src="https://app.eraser.io/workspace/2IoevTvZwqYpEQhiLpGq/preview?diagram=2uU7HtVk0m7-BiY0m79j&type=embed" /></a>
+<a href="https://app.eraser.io/workspace/2IoevTvZwqYpEQhiLpGq?diagram=2uU7HtVk0m7-BiY0m79j">View on Eraser<br /><img src="https://raw.githubusercontent.com/TanmoyTSSaha/tanmoytssaha-blogs-markdown/main/blogs/Near%20Real-Time%20Marketing%20Pipeline/assets/hld-02-ingestion.png" /></a>
 
 Routine Load is the ingestion writer. Deduplication comes later as a SQL stage run by the orchestrator, which never touches Kafka directly. The full path is sketched in the diagram above: source topic, Routine Load with its validity filter, the raw table, and the orchestrator reading closed window slices into the deduplicated table.
 

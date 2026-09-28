@@ -38,7 +38,7 @@ External API
 ```
 One application image serves many destinations. A runtime vendor identifier picks the configuration each worker runs with, keeping classification, enrichment, and publishing clear of any single platform's URL, auth style, batching habits, or JSON shape.
 
-<a href="https://app.eraser.io/workspace/2IoevTvZwqYpEQhiLpGq?diagram=aS7TeNgXEkjc-p2YySy0">View on Eraser<br /><img src="https://app.eraser.io/workspace/2IoevTvZwqYpEQhiLpGq/preview?diagram=aS7TeNgXEkjc-p2YySy0&type=embed" /></a>
+<a href="https://app.eraser.io/workspace/2IoevTvZwqYpEQhiLpGq?diagram=aS7TeNgXEkjc-p2YySy0">View on Eraser<br /><img src="https://raw.githubusercontent.com/TanmoyTSSaha/tanmoytssaha-blogs-markdown/main/blogs/Near%20Real-Time%20Marketing%20Pipeline/assets/hld-11-onboarding.png" /></a>
 
 ## The configuration model
 

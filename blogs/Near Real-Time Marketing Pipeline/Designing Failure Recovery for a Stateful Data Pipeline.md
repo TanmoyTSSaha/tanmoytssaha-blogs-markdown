@@ -35,7 +35,7 @@ Do not automatically roll back state
 ```
 The execution ledger decides which bucket each failure lands in.
 
-<a href="https://app.eraser.io/workspace/2IoevTvZwqYpEQhiLpGq?diagram=QAreWgIl3wfcP6UNTeLg">View on Eraser<br /><img src="https://app.eraser.io/workspace/2IoevTvZwqYpEQhiLpGq/preview?diagram=QAreWgIl3wfcP6UNTeLg&type=embed" /></a>
+<a href="https://app.eraser.io/workspace/2IoevTvZwqYpEQhiLpGq?diagram=QAreWgIl3wfcP6UNTeLg">View on Eraser<br /><img src="https://raw.githubusercontent.com/TanmoyTSSaha/tanmoytssaha-blogs-markdown/main/blogs/Near%20Real-Time%20Marketing%20Pipeline/assets/hld-07-recovery.png" /></a>
 
 ## The recovery path
 

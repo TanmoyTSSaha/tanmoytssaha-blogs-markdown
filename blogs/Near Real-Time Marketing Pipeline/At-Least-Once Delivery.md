@@ -25,7 +25,7 @@ Delivery reliability
 ```
 The publish stage carries an explicit progress checkpoint. It resumes from the last recorded position and accepts a small replay window.
 
-<a href="https://app.eraser.io/workspace/2IoevTvZwqYpEQhiLpGq?diagram=1LLwBE-ClUoc1azjTujh">View on Eraser<br /><img src="https://app.eraser.io/workspace/2IoevTvZwqYpEQhiLpGq/preview?diagram=1LLwBE-ClUoc1azjTujh&type=embed" /></a>
+<a href="https://app.eraser.io/workspace/2IoevTvZwqYpEQhiLpGq?diagram=1LLwBE-ClUoc1azjTujh">View on Eraser<br /><img src="https://raw.githubusercontent.com/TanmoyTSSaha/tanmoytssaha-blogs-markdown/main/blogs/Near%20Real-Time%20Marketing%20Pipeline/assets/hld-08-delivery.png" /></a>
 
 ## Two different guarantees
 

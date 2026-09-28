@@ -27,7 +27,7 @@ Durable failure handling
 ```
 Once a worker's local retry budget runs out, the event becomes a dead letter. A separate retry process later decides whether it qualifies for automatic recovery, so the original consumer never sits blocked.
 
-<a href="https://app.eraser.io/workspace/2IoevTvZwqYpEQhiLpGq?diagram=2VRsxfthdjakJvsMIdMq">View on Eraser<br /><img src="https://app.eraser.io/workspace/2IoevTvZwqYpEQhiLpGq/preview?diagram=2VRsxfthdjakJvsMIdMq&type=embed" /></a>
+<a href="https://app.eraser.io/workspace/2IoevTvZwqYpEQhiLpGq?diagram=2VRsxfthdjakJvsMIdMq">View on Eraser<br /><img src="https://raw.githubusercontent.com/TanmoyTSSaha/tanmoytssaha-blogs-markdown/main/blogs/Near%20Real-Time%20Marketing%20Pipeline/assets/hld-10-dlq.png" /></a>
 
 ## The path
 

@@ -28,7 +28,7 @@ Ingestion → Classification → Enrichment → Delivery
 ```
 The administrative API manages configuration and audit records. Processing and delivery workloads read that configuration, while no classified event ever passes through the API. Operational configuration and high-volume event processing stay decoupled.
 
-<a href="https://app.eraser.io/workspace/2IoevTvZwqYpEQhiLpGq?diagram=ZijaOPad2KEhKMOVkEyh">View on Eraser<br /><img src="https://app.eraser.io/workspace/2IoevTvZwqYpEQhiLpGq/preview?diagram=ZijaOPad2KEhKMOVkEyh&type=embed" /></a>
+<a href="https://app.eraser.io/workspace/2IoevTvZwqYpEQhiLpGq?diagram=ZijaOPad2KEhKMOVkEyh">View on Eraser<br /><img src="https://raw.githubusercontent.com/TanmoyTSSaha/tanmoytssaha-blogs-markdown/main/blogs/Near%20Real-Time%20Marketing%20Pipeline/assets/hld-12-kubernetes.png" /></a>
 
 ## High-level architecture
 
