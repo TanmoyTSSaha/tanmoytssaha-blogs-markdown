@@ -102,14 +102,20 @@
         },
         {
             "name": "StarRocks",
+            "icon-dark":"https://icons-for-free.com/iff/png/512/starrocks-1336519700468980692.png",
+            "icon-light":"https://icons-for-free.com/iff/png/512/starrocks-1336519700468980692.png",
             "type": "Frameworks & Databases"
         },
         {
             "name": "MySQL",
+            "icon-dark":"https://raw.githubusercontent.com/tandpfun/skill-icons/7f7e691e71aec64e8354bf697835e009d1ad80f8/icons/MySQL-Dark.svg",
+            "icon-light":"https://raw.githubusercontent.com/tandpfun/skill-icons/7f7e691e71aec64e8354bf697835e009d1ad80f8/icons/MySQL-Light.svg",
             "type": "Frameworks & Databases"
         },
         {
             "name": "MCP",
+            "icon-dark":"blob:https://hugeicons.com/11c7b010-9f83-42be-8873-ac2b7ec54661",
+            "icon-light":"blob:https://hugeicons.com/11c7b010-9f83-42be-8873-ac2b7ec54661",
             "type": "Frameworks & Databases"
         },
         {
@@ -121,17 +127,15 @@
             "type": "Frameworks & Databases"
         },
         {
-            "name": "Cassandra",
-            "icon-dark": "https://raw.githubusercontent.com/tandpfun/skill-icons/65dea6c4eaca7da319e552c09f4cf5a9a8dab2c8/icons/Cassandra-Dark.svg",
-            "icon-light": "https://raw.githubusercontent.com/tandpfun/skill-icons/65dea6c4eaca7da319e552c09f4cf5a9a8dab2c8/icons/Cassandra-Light.svg",
+            "name": "Apache Hive",
+            "icon-dark":"https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bb/Apache_Hive_logo.svg/1920px-Apache_Hive_logo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail&_=20151020034510",
+            "icon-light":"https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bb/Apache_Hive_logo.svg/1920px-Apache_Hive_logo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail&_=20151020034510",
             "type": "Frameworks & Databases"
         },
         {
-            "name": "Hive",
-            "type": "Frameworks & Databases"
-        },
-        {
-            "name": "Iceberg",
+            "name": "Apache Iceberg",
+            "icon-dark":"https://www.dremio.com/wp-content/uploads/2021/06/iceberg-logo-with-name.png",
+            "icon-light":"https://www.dremio.com/wp-content/uploads/2021/06/iceberg-logo-with-name.png",
             "type": "Frameworks & Databases"
         },
         {
@@ -148,22 +152,32 @@
         },
         {
             "name": "Step Functions",
+            "icon-dark": "https://www.freepng.com/uploads/images/202512/ws-step-functions-logo-vector-png_600x.jpg",
+            "icon-light": "https://www.freepng.com/uploads/images/202512/ws-step-functions-logo-vector-png_600x.jpg",
             "type": "Cloud & DevOps"
         },
         {
             "name": "ArgoCD",
+            "icon-dark": "https://icon.icepanel.io/Technology/svg/Argo-CD.svg",
+            "icon-light": "https://icon.icepanel.io/Technology/svg/Argo-CD.svg",
             "type": "Cloud & DevOps"
         },
         {
             "name": "Prometheus",
+            "icon-dark": "https://raw.githubusercontent.com/tandpfun/skill-icons/7f7e691e71aec64e8354bf697835e009d1ad80f8/icons/Prometheus.svg",
+            "icon-light": "https://raw.githubusercontent.com/tandpfun/skill-icons/7f7e691e71aec64e8354bf697835e009d1ad80f8/icons/Prometheus.svg",
             "type": "Cloud & DevOps"
         },
         {
             "name": "Grafana",
+            "icon-dark": "https://raw.githubusercontent.com/tandpfun/skill-icons/7f7e691e71aec64e8354bf697835e009d1ad80f8/icons/Grafana-Dark.svg",
+            "icon-light": "https://raw.githubusercontent.com/tandpfun/skill-icons/7f7e691e71aec64e8354bf697835e009d1ad80f8/icons/Grafana-Light.svg",
             "type": "Cloud & DevOps"
         },
         {
             "name": "CloudWatch",
+            "icon-dark": "https://cloud-icons.onemodel.app/aws/Architecture-Service-Icons_01312023/Arch_Management-Governance/64/Arch_Amazon-CloudWatch_64.svg",
+            "icon-light": "https://cloud-icons.onemodel.app/aws/Architecture-Service-Icons_01312023/Arch_Management-Governance/64/Arch_Amazon-CloudWatch_64.svg",
             "type": "Cloud & DevOps"
         },
         {
@@ -252,10 +266,14 @@
         },
         {
             "name": "Cursor",
+            "icon-dark": "https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/cursor-ai-code-icon.png",
+            "icon-light": "https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/cursor-ai-code-icon.png",
             "type": "Tools & Practices"
         },
         {
             "name": "Claude",
+            "icon-dark": "https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/claude-ai-icon.png",
+            "icon-light": "https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/claude-ai-icon.png",
             "type": "Tools & Practices"
         },
         {
